@@ -1,0 +1,71 @@
+.hourly-card {
+  margin-bottom: 14px;
+}
+
+.hourly-strip {
+  display: flex;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  gap: 16px;
+  padding-bottom: 6px;
+  margin: 0 -4px;
+  padding-left: 4px;
+  padding-right: 4px;
+  scrollbar-width: thin;
+}
+
+.hourly-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  min-width: 52px;
+  scroll-snap-align: start;
+  text-align: center;
+  gap: 8px;
+}
+
+.hourly-time {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--color-text-secondary);
+  white-space: nowrap;
+}
+
+.hourly-icon-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 38px;
+  justify-content: center;
+  position: relative;
+}
+
+.hourly-precip {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--color-text-blue);
+  line-height: 1;
+  margin-top: 2px;
+}
+
+.hourly-temp {
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.hourly-sun-event {
+  color: #ffb74d;
+}
+
+.hourly-sun-event.sunset {
+  color: #ff7043;
+}
+
+.hourly-sun-label {
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--color-text-primary);
+  white-space: nowrap;
+}
