@@ -28,9 +28,9 @@ import './App.css';
 const INITIAL_UNITS = getDefaultUnits();
 
 export default function App() {
-  const [places, setPlaces] = useLocalStorage<Place[]>('aether_saved_places', DEFAULT_PLACES);
-  const [activePlaceIndex, setActivePlaceIndex] = useLocalStorage<number>('aether_active_index', 0);
-  const [units, setUnits] = useLocalStorage<UnitsConfig>('aether_units', INITIAL_UNITS);
+  const [places, setPlaces] = useLocalStorage<Place[]>('hush_saved_places', DEFAULT_PLACES);
+  const [activePlaceIndex, setActivePlaceIndex] = useLocalStorage<number>('hush_active_index', 0);
+  const [units, setUnits] = useLocalStorage<UnitsConfig>('hush_units', INITIAL_UNITS);
 
   const [isPlacesOpen, setIsPlacesOpen] = useState(false);
   const [isSettingsOpen, setIsSettingsOpen] = useState(false);

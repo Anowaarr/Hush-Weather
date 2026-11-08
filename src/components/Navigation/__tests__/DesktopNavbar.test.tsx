@@ -41,7 +41,7 @@ describe('DesktopNavbar Component', () => {
       />
     );
 
-    expect(screen.getByText('Aether Weather')).toBeInTheDocument();
+    expect(screen.getByText('Hush')).toBeInTheDocument();
     expect(screen.getByText('All Countries')).toBeInTheDocument();
     expect(screen.getByPlaceholderText(/Search any city or place in the world/i)).toBeInTheDocument();
 

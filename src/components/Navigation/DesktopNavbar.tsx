@@ -80,7 +80,7 @@ export const DesktopNavbar: React.FC<DesktopNavbarProps> = ({
         {/* Brand */}
         <div className="desktop-brand">
           <CloudSun size={26} color="#60cdff" />
-          <span>Aether Weather</span>
+          <span>Hush</span>
           <span className="desktop-brand-badge">Desktop</span>
         </div>
 

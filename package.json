@@ -1,8 +1,8 @@
 {
-  "name": "aether-weather",
+  "name": "hush-weather",
   "private": true,
   "version": "1.0.0",
-  "description": "An elegant, iOS-inspired weather web application built with React, TypeScript, and Open-Meteo API.",
+  "description": "An elegant, iOS-inspired weather web application named Hush, built with React, TypeScript, and Open-Meteo API.",
   "type": "module",
   "scripts": {
     "dev": "vite",

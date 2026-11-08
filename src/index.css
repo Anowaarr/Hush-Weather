@@ -40,21 +40,23 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-html, body {
+html {
+  width: 100%;
+  min-height: 100%;
+  overflow-x: hidden;
+  overflow-y: auto;
+  scroll-behavior: smooth;
+}
+
+body {
   width: 100%;
   min-height: 100%;
   font-family: var(--font-system);
   color: var(--color-text-primary);
   background-color: #0b1330;
   overflow-x: hidden;
-  user-select: none;
-  -webkit-user-select: none;
-  text-shadow: var(--text-shadow-subtle);
-}
-
-body {
   position: relative;
-  overscroll-behavior-y: none;
+  text-shadow: var(--text-shadow-subtle);
 }
 
 /* Accessibility focus styles */

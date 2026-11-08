@@ -8,6 +8,7 @@
   height: 100vh;
   z-index: 0;
   overflow: hidden;
+  pointer-events: none !important;
 }
 
 .dynamic-bg-layer {
@@ -19,6 +20,7 @@
   transition: opacity 800ms ease;
   background-size: 100% 100%;
   background-repeat: no-repeat;
+  pointer-events: none !important;
 }
 
 /* Theme Gradients */

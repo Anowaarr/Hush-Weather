@@ -27,7 +27,7 @@ export const Footer: React.FC = () => {
         </a>
       </div>
       <div style={{ marginTop: '4px', fontSize: '11px', opacity: 0.8 }}>
-        Aether Weather &bull; Inspired by Apple iOS Weather
+        Hush &bull; Inspired by Apple iOS Weather
       </div>
     </footer>
   );

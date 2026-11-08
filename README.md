@@ -1,6 +1,6 @@
-# Aether Weather
+# Hush
 
-An Apple iOS Weather-inspired web application crafted with React, TypeScript, plain CSS, and the Open-Meteo API. Built for modern browsers with dynamic atmospheric particle canvases, fluid glassmorphism, a condensing hero header, and detailed meteorological metrics.
+An Apple iOS Weather-inspired web application named **Hush**, crafted with React, TypeScript, plain CSS, and the Open-Meteo API. Built for modern browsers with dynamic atmospheric particle canvases, fluid glassmorphism, a condensing hero header, and detailed meteorological metrics.
 
 [![CI](https://github.com/<username>/<repo-name>/actions/workflows/ci.yml/badge.svg)](https://github.com/<username>/<repo-name>/actions/workflows/ci.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
