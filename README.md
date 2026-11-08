@@ -2,13 +2,12 @@
 
 An Apple iOS Weather-inspired web application named **Hush**, crafted with React, TypeScript, plain CSS, and the Open-Meteo API. Built for modern browsers with dynamic atmospheric particle canvases, fluid glassmorphism, a condensing hero header, and detailed meteorological metrics.
 
-[![CI](https://github.com/<username>/<repo-name>/actions/workflows/ci.yml/badge.svg)](https://github.com/<username>/<repo-name>/actions/workflows/ci.yml)
+[![CI](https://github.com/Anowaarr/Hush-Weather/actions/workflows/ci.yml/badge.svg)](https://github.com/Anowaarr/Hush-Weather/actions/workflows/ci.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.7-blue)](https://www.typescriptlang.org/)
 [![Vite](https://img.shields.io/badge/Vite-6.0-646CFF)](https://vitejs.dev/)
 
-> **Live Demo:** [https://<username>.github.io/<repo-name>/](https://<username>.github.io/<repo-name>/)  
-> *(Replace `<username>` and `<repo-name>` with your GitHub account and repository)*
+> **Live Demo:** [https://anowaarr.github.io/Hush-Weather/](https://anowaarr.github.io/Hush-Weather/)
 
 ---
 
@@ -137,8 +136,8 @@ Transitions between themes cross-fade smoothly over an 800ms duration.
 ### Installation
 Clone the repository and install dependencies:
 ```bash
-git clone https://github.com/<username>/<repo-name>.git
-cd <repo-name>
+git clone https://github.com/Anowaarr/Hush-Weather.git
+cd Hush-Weather
 npm install
 ```
 
