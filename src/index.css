@@ -1,0 +1,141 @@
+:root {
+  /* Typography */
+  --font-system: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", Inter, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  
+  /* Text Colors */
+  --color-text-primary: #ffffff;
+  --color-text-secondary: rgba(255, 255, 255, 0.72);
+  --color-text-tertiary: rgba(255, 255, 255, 0.52);
+  --color-text-blue: #60cdff;
+  
+  /* Glass card styling */
+  --glass-bg: rgba(255, 255, 255, 0.15);
+  --glass-border: 1px solid rgba(255, 255, 255, 0.18);
+  --glass-border-subtle: 1px solid rgba(255, 255, 255, 0.1);
+  --glass-blur: blur(20px) saturate(140%);
+  --card-radius: 22px;
+  --card-padding: 16px;
+  --glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.18);
+  
+  /* Text shadows */
+  --text-shadow-subtle: 0 1px 3px rgba(0, 0, 0, 0.3);
+  --text-shadow-hero: 0 2px 6px rgba(0, 0, 0, 0.25);
+
+  /* Transition speeds */
+  --transition-fast: 200ms cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-normal: 350ms cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-bg: 800ms ease;
+  
+  /* Safe areas */
+  --safe-top: env(safe-area-inset-top, 0px);
+  --safe-bottom: env(safe-area-inset-bottom, 0px);
+}
+
+/* Base resets */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+html, body {
+  width: 100%;
+  min-height: 100%;
+  font-family: var(--font-system);
+  color: var(--color-text-primary);
+  background-color: #0b1330;
+  overflow-x: hidden;
+  user-select: none;
+  -webkit-user-select: none;
+  text-shadow: var(--text-shadow-subtle);
+}
+
+body {
+  position: relative;
+  overscroll-behavior-y: none;
+}
+
+/* Accessibility focus styles */
+:focus-visible {
+  outline: 2px solid rgba(255, 255, 255, 0.85);
+  outline-offset: 2px;
+}
+
+button {
+  font-family: inherit;
+  color: inherit;
+  background: none;
+  border: none;
+  cursor: pointer;
+  outline: none;
+  touch-action: manipulation;
+}
+
+input {
+  font-family: inherit;
+  color: inherit;
+}
+
+/* Glass Card Common Utility */
+.glass-card {
+  background: var(--glass-bg);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border: var(--glass-border);
+  border-radius: var(--card-radius);
+  padding: var(--card-padding);
+  box-shadow: var(--glass-shadow);
+  transition: transform var(--transition-fast), background-color var(--transition-normal);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Card Section Header */
+.card-header {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--color-text-secondary);
+  margin-bottom: 12px;
+}
+
+.card-header svg {
+  width: 14px;
+  height: 14px;
+  opacity: 0.85;
+}
+
+/* Scrollbar styles */
+::-webkit-scrollbar {
+  height: 4px;
+  width: 4px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.4);
+}
+
+/* Motion reduction */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
