@@ -1,0 +1,277 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 820" width="100%" height="100%">
+  <defs>
+    <!-- Background Gradient for Clear Day / Dusk -->
+    <linearGradient id="skyGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#2563eb" />
+      <stop offset="45%" stop-color="#38bdf8" />
+      <stop offset="100%" stop-color="#93c5fd" />
+    </linearGradient>
+
+    <!-- Glass Fill -->
+    <linearGradient id="glassFill" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="rgba(255, 255, 255, 0.22)" />
+      <stop offset="100%" stop-color="rgba(255, 255, 255, 0.08)" />
+    </linearGradient>
+
+    <!-- Glass Stroke -->
+    <linearGradient id="glassBorder" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="rgba(255, 255, 255, 0.4)" />
+      <stop offset="100%" stop-color="rgba(255, 255, 255, 0.15)" />
+    </linearGradient>
+
+    <!-- Temperature Range Gradient -->
+    <linearGradient id="tempRangeGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#38bdf8" />
+      <stop offset="40%" stop-color="#4ade80" />
+      <stop offset="75%" stop-color="#facc15" />
+      <stop offset="100%" stop-color="#f97316" />
+    </linearGradient>
+
+    <!-- UV Gradient -->
+    <linearGradient id="uvGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#48c774" />
+      <stop offset="35%" stop-color="#ffdd57" />
+      <stop offset="65%" stop-color="#ff8c00" />
+      <stop offset="90%" stop-color="#f14668" />
+      <stop offset="100%" stop-color="#9b51e0" />
+    </linearGradient>
+
+    <filter id="phoneShadow" x="-10%" y="-5%" width="120%" height="115%">
+      <feDropShadow dx="0" dy="18" stdDeviation="28" flood-color="#020617" flood-opacity="0.6" />
+    </filter>
+  </defs>
+
+  <style>
+    .sf-display { font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", Roboto, sans-serif; }
+    .sf-text { font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, sans-serif; }
+    .sf-mono { font-family: "SF Mono", Menlo, Consolas, Monaco, monospace; }
+  </style>
+
+  <!-- iPhone Outer Chassis -->
+  <g filter="url(#phoneShadow)">
+    <rect x="15" y="15" width="370" height="790" rx="48" fill="#0f172a" stroke="#334155" stroke-width="4" />
+    <rect x="21" y="21" width="358" height="778" rx="42" fill="url(#skyGrad)" />
+  </g>
+
+  <!-- Dynamic Island / Speaker Notch -->
+  <rect x="145" y="28" width="110" height="24" rx="12" fill="#020617" />
+  <circle cx="236" cy="40" r="4" fill="#1e293b" />
+
+  <!-- Status Bar Time -->
+  <text x="50" y="44" fill="#ffffff" class="sf-display" font-size="13" font-weight="600">9:41</text>
+  <!-- Battery / Signal Icons -->
+  <g transform="translate(315, 34)" fill="#ffffff">
+    <rect x="0" y="3" width="3" height="6" rx="0.5" />
+    <rect x="5" y="2" width="3" height="7" rx="0.5" />
+    <rect x="10" y="0" width="3" height="9" rx="0.5" />
+    <rect x="18" y="1" width="16" height="8" rx="2" fill="none" stroke="#ffffff" stroke-width="1" />
+    <rect x="20" y="3" width="10" height="4" rx="1" fill="#ffffff" />
+  </g>
+
+  <!-- App Scroll Content -->
+  <!-- 1. Hero Section -->
+  <g transform="translate(200, 105)" text-anchor="middle">
+    <!-- Live Destination Clock Badge -->
+    <rect x="-65" y="0" width="130" height="22" rx="11" fill="rgba(15, 23, 42, 0.4)" stroke="rgba(255, 255, 255, 0.2)" />
+    <circle cx="-50" cy="11" r="3" fill="#34d399" />
+    <text x="10" y="15" fill="#ffffff" class="sf-mono" font-size="11" font-weight="600">14:32:05 JST</text>
+
+    <!-- City & Country -->
+    <text x="0" y="46" fill="#ffffff" class="sf-display" font-size="28" font-weight="600" letter-spacing="-0.02em">Tokyo</text>
+    <text x="0" y="64" fill="rgba(255,255,255,0.75)" class="sf-text" font-size="13">Japan</text>
+
+    <!-- Temp -->
+    <text x="6" y="132" fill="#ffffff" class="sf-display" font-size="76" font-weight="200" letter-spacing="-0.04em">24°</text>
+
+    <!-- Condition -->
+    <text x="0" y="158" fill="#ffffff" class="sf-display" font-size="17" font-weight="500">Partly Cloudy</text>
+    <text x="0" y="178" fill="rgba(255,255,255,0.85)" class="sf-text" font-size="13" font-weight="500">H:28°   L:19°</text>
+  </g>
+
+  <!-- 2. Hourly Forecast Glass Card -->
+  <g transform="translate(32, 295)">
+    <rect width="336" height="110" rx="20" fill="url(#glassFill)" stroke="url(#glassBorder)" stroke-width="1" />
+    
+    <!-- Section Header -->
+    <g transform="translate(14, 18)">
+      <circle cx="5" cy="5" r="4" fill="none" stroke="rgba(255,255,255,0.7)" stroke-width="1.2" />
+      <polyline points="5,2 5,5 7,6" fill="none" stroke="rgba(255,255,255,0.7)" stroke-width="1.2" />
+      <text x="16" y="8" fill="rgba(255,255,255,0.75)" class="sf-display" font-size="10.5" font-weight="600" letter-spacing="0.05em">HOURLY FORECAST</text>
+    </g>
+
+    <line x1="14" y1="28" x2="322" y2="28" stroke="rgba(255,255,255,0.12)" stroke-width="1" />
+
+    <!-- Hourly Items Strip -->
+    <!-- Now -->
+    <g transform="translate(38, 44)" text-anchor="middle">
+      <text x="0" y="0" fill="#ffffff" class="sf-text" font-size="11" font-weight="500">Now</text>
+      <circle cx="0" cy="18" r="6" fill="#facc15" />
+      <text x="0" y="44" fill="#ffffff" class="sf-display" font-size="14" font-weight="600">24°</text>
+    </g>
+
+    <!-- 15:00 -->
+    <g transform="translate(98, 44)" text-anchor="middle">
+      <text x="0" y="0" fill="rgba(255,255,255,0.8)" class="sf-text" font-size="11">15:00</text>
+      <circle cx="0" cy="18" r="6" fill="#facc15" />
+      <text x="0" y="44" fill="#ffffff" class="sf-display" font-size="14" font-weight="500">24°</text>
+    </g>
+
+    <!-- 16:00 (Precip 30%) -->
+    <g transform="translate(158, 44)" text-anchor="middle">
+      <text x="0" y="0" fill="rgba(255,255,255,0.8)" class="sf-text" font-size="11">16:00</text>
+      <circle cx="0" cy="14" r="5" fill="#93c5fd" />
+      <text x="0" y="27" fill="#60cdff" class="sf-text" font-size="9" font-weight="700">30%</text>
+      <text x="0" y="44" fill="#ffffff" class="sf-display" font-size="14" font-weight="500">23°</text>
+    </g>
+
+    <!-- Sunset Injected -->
+    <g transform="translate(225, 44)" text-anchor="middle">
+      <text x="0" y="0" fill="#fdba74" class="sf-text" font-size="11" font-weight="600">17:14</text>
+      <text x="0" y="20" fill="#fb923c" class="sf-text" font-size="16">🌇</text>
+      <text x="0" y="44" fill="#fdba74" class="sf-display" font-size="11" font-weight="600">Sunset</text>
+    </g>
+
+    <!-- 18:00 -->
+    <g transform="translate(295, 44)" text-anchor="middle">
+      <text x="0" y="0" fill="rgba(255,255,255,0.8)" class="sf-text" font-size="11">18:00</text>
+      <circle cx="0" cy="18" r="6" fill="#cbd5e1" />
+      <text x="0" y="44" fill="#ffffff" class="sf-display" font-size="14" font-weight="500">21°</text>
+    </g>
+  </g>
+
+  <!-- 3. 10-Day Forecast Glass Card -->
+  <g transform="translate(32, 415)">
+    <rect width="336" height="175" rx="20" fill="url(#glassFill)" stroke="url(#glassBorder)" stroke-width="1" />
+    
+    <g transform="translate(14, 18)">
+      <rect x="0" y="0" width="10" height="10" rx="2" fill="none" stroke="rgba(255,255,255,0.7)" stroke-width="1.2" />
+      <line x1="0" y1="3" x2="10" y2="3" stroke="rgba(255,255,255,0.7)" stroke-width="1.2" />
+      <text x="16" y="8" fill="rgba(255,255,255,0.75)" class="sf-display" font-size="10.5" font-weight="600" letter-spacing="0.05em">10-DAY FORECAST</text>
+    </g>
+
+    <line x1="14" y1="28" x2="322" y2="28" stroke="rgba(255,255,255,0.12)" stroke-width="1" />
+
+    <!-- Day 1: Today -->
+    <g transform="translate(14, 46)">
+      <text x="0" y="0" fill="#ffffff" class="sf-text" font-size="13" font-weight="600">Today</text>
+      <circle cx="68" cy="-4" r="5" fill="#facc15" />
+      <text x="96" y="0" fill="rgba(255,255,255,0.7)" class="sf-mono" font-size="12">19°</text>
+      
+      <rect x="126" y="-7" width="130" height="5" rx="2.5" fill="rgba(0,0,0,0.25)" />
+      <rect x="140" y="-7" width="100" height="5" rx="2.5" fill="url(#tempRangeGrad)" />
+      <!-- Current Pip -->
+      <circle cx="188" cy="-4.5" r="3.5" fill="#ffffff" stroke="#1e293b" stroke-width="1.5" />
+
+      <text x="272" y="0" fill="#ffffff" class="sf-mono" font-size="12" font-weight="600">28°</text>
+    </g>
+
+    <line x1="14" y1="58" x2="322" y2="58" stroke="rgba(255,255,255,0.08)" />
+
+    <!-- Day 2: Mon -->
+    <g transform="translate(14, 78)">
+      <text x="0" y="0" fill="#ffffff" class="sf-text" font-size="13">Mon</text>
+      <text x="64" y="0" fill="#60cdff" class="sf-text" font-size="11">🌧️</text>
+      <text x="96" y="0" fill="rgba(255,255,255,0.7)" class="sf-mono" font-size="12">17°</text>
+      
+      <rect x="126" y="-7" width="130" height="5" rx="2.5" fill="rgba(0,0,0,0.25)" />
+      <rect x="130" y="-7" width="80" height="5" rx="2.5" fill="url(#tempRangeGrad)" />
+
+      <text x="272" y="0" fill="#ffffff" class="sf-mono" font-size="12" font-weight="600">24°</text>
+    </g>
+
+    <line x1="14" y1="90" x2="322" y2="90" stroke="rgba(255,255,255,0.08)" />
+
+    <!-- Day 3: Tue -->
+    <g transform="translate(14, 110)">
+      <text x="0" y="0" fill="#ffffff" class="sf-text" font-size="13">Tue</text>
+      <circle cx="68" cy="-4" r="5" fill="#facc15" />
+      <text x="96" y="0" fill="rgba(255,255,255,0.7)" class="sf-mono" font-size="12">18°</text>
+      
+      <rect x="126" y="-7" width="130" height="5" rx="2.5" fill="rgba(0,0,0,0.25)" />
+      <rect x="135" y="-7" width="95" height="5" rx="2.5" fill="url(#tempRangeGrad)" />
+
+      <text x="272" y="0" fill="#ffffff" class="sf-mono" font-size="12" font-weight="600">26°</text>
+    </g>
+
+    <line x1="14" y1="122" x2="322" y2="122" stroke="rgba(255,255,255,0.08)" />
+
+    <!-- Day 4: Wed -->
+    <g transform="translate(14, 142)">
+      <text x="0" y="0" fill="#ffffff" class="sf-text" font-size="13">Wed</text>
+      <circle cx="68" cy="-4" r="5" fill="#cbd5e1" />
+      <text x="96" y="0" fill="rgba(255,255,255,0.7)" class="sf-mono" font-size="12">16°</text>
+      
+      <rect x="126" y="-7" width="130" height="5" rx="2.5" fill="rgba(0,0,0,0.25)" />
+      <rect x="128" y="-7" width="70" height="5" rx="2.5" fill="url(#tempRangeGrad)" />
+
+      <text x="272" y="0" fill="#ffffff" class="sf-mono" font-size="12" font-weight="600">23°</text>
+    </g>
+  </g>
+
+  <!-- 4. Detail Tiles (UV Index & Wind) -->
+  <g transform="translate(32, 600)">
+    <!-- Tile 1: UV Index -->
+    <rect x="0" y="0" width="162" height="115" rx="20" fill="url(#glassFill)" stroke="url(#glassBorder)" stroke-width="1" />
+    <g transform="translate(12, 16)">
+      <circle cx="5" cy="5" r="4" fill="none" stroke="rgba(255,255,255,0.7)" stroke-width="1.2" />
+      <text x="14" y="8" fill="rgba(255,255,255,0.75)" class="sf-display" font-size="10" font-weight="600" letter-spacing="0.05em">UV INDEX</text>
+
+      <text x="0" y="38" fill="#ffffff" class="sf-display" font-size="24" font-weight="500">4</text>
+      <text x="0" y="54" fill="#facc15" class="sf-text" font-size="13" font-weight="600">Moderate</text>
+
+      <rect x="0" y="62" width="138" height="4" rx="2" fill="url(#uvGrad)" />
+      <circle cx="50" cy="64" r="3.5" fill="#ffffff" stroke="#1e293b" stroke-width="1" />
+
+      <text x="0" y="82" fill="rgba(255,255,255,0.7)" class="sf-text" font-size="9.5">Moderate for the rest of day.</text>
+    </g>
+
+    <!-- Tile 2: Wind Compass -->
+    <rect x="174" y="0" width="162" height="115" rx="20" fill="url(#glassFill)" stroke="url(#glassBorder)" stroke-width="1" />
+    <g transform="translate(186, 16)">
+      <path d="M 0 5 Q 5 2 10 5" fill="none" stroke="rgba(255,255,255,0.7)" stroke-width="1.2" />
+      <text x="14" y="8" fill="rgba(255,255,255,0.75)" class="sf-display" font-size="10" font-weight="600" letter-spacing="0.05em">WIND</text>
+
+      <!-- Speed & Dir -->
+      <text x="0" y="38" fill="#ffffff" class="sf-display" font-size="22" font-weight="500">14 km/h</text>
+      <text x="0" y="54" fill="#ffffff" class="sf-text" font-size="13" font-weight="500">NE</text>
+
+      <!-- Mini Compass Dial -->
+      <circle cx="106" cy="42" r="22" fill="rgba(0,0,0,0.2)" stroke="rgba(255,255,255,0.2)" stroke-width="1" />
+      <text x="106" y="27" fill="rgba(255,255,255,0.5)" class="sf-text" font-size="7" font-weight="700" text-anchor="middle">N</text>
+      <line x1="106" y1="42" x2="118" y2="30" stroke="#38bdf8" stroke-width="2" stroke-linecap="round" />
+      <circle cx="106" cy="42" r="2" fill="#ffffff" />
+
+      <text x="0" y="82" fill="rgba(255,255,255,0.7)" class="sf-text" font-size="9.5">Gusts up to 21 km/h.</text>
+    </g>
+  </g>
+
+  <!-- 5. iOS Bottom Glass Navigation Bar -->
+  <g transform="translate(21, 725)">
+    <rect width="358" height="74" rx="36" fill="rgba(15, 23, 42, 0.65)" stroke="rgba(255, 255, 255, 0.15)" stroke-width="1" />
+    
+    <!-- Map / Countries Pin -->
+    <g transform="translate(26, 18)" stroke="#ffffff" fill="none" stroke-width="1.5">
+      <circle cx="8" cy="8" r="7" />
+      <path d="M 1,8 Q 8,4 15,8" />
+      <path d="M 8,1 C 4,5 4,11 8,15 C 12,11 12,5 8,1" />
+    </g>
+
+    <!-- Page Indicator Dots -->
+    <g transform="translate(160, 26)">
+      <polygon points="0,0 3,8 -3,8" fill="#ffffff" />
+      <circle cx="16" cy="4" r="3" fill="#ffffff" />
+      <circle cx="28" cy="4" r="3" fill="rgba(255,255,255,0.35)" />
+      <circle cx="40" cy="4" r="3" fill="rgba(255,255,255,0.35)" />
+    </g>
+
+    <!-- List Hamburger Button -->
+    <g transform="translate(305, 20)" stroke="#ffffff" stroke-width="1.8" stroke-linecap="round">
+      <line x1="0" y1="3" x2="18" y2="3" />
+      <line x1="0" y1="9" x2="18" y2="9" />
+      <line x1="0" y1="15" x2="18" y2="15" />
+    </g>
+
+    <!-- Home Indicator -->
+    <rect x="114" y="52" width="130" height="4" rx="2" fill="#ffffff" opacity="0.8" />
+  </g>
+</svg>

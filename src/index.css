@@ -1,34 +1,83 @@
 :root {
   /* Typography */
   --font-system: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", Inter, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-  
-  /* Text Colors */
+  --card-radius: 22px;
+  --card-padding: 16px;
+  --transition-fast: 200ms cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-normal: 350ms cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-bg: 800ms ease;
+  --safe-top: env(safe-area-inset-top, 0px);
+  --safe-bottom: env(safe-area-inset-bottom, 0px);
+
+  /* Dark Theme Mode (Default) */
   --color-text-primary: #ffffff;
   --color-text-secondary: rgba(255, 255, 255, 0.72);
   --color-text-tertiary: rgba(255, 255, 255, 0.52);
   --color-text-blue: #60cdff;
   
-  /* Glass card styling */
   --glass-bg: rgba(255, 255, 255, 0.15);
   --glass-border: 1px solid rgba(255, 255, 255, 0.18);
   --glass-border-subtle: 1px solid rgba(255, 255, 255, 0.1);
   --glass-blur: blur(20px) saturate(140%);
-  --card-radius: 22px;
-  --card-padding: 16px;
   --glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.18);
   
-  /* Text shadows */
   --text-shadow-subtle: 0 1px 3px rgba(0, 0, 0, 0.3);
   --text-shadow-hero: 0 2px 6px rgba(0, 0, 0, 0.25);
 
-  /* Transition speeds */
-  --transition-fast: 200ms cubic-bezier(0.16, 1, 0.3, 1);
-  --transition-normal: 350ms cubic-bezier(0.16, 1, 0.3, 1);
-  --transition-bg: 800ms ease;
-  
-  /* Safe areas */
-  --safe-top: env(safe-area-inset-top, 0px);
-  --safe-bottom: env(safe-area-inset-bottom, 0px);
+  --bar-bg: rgba(15, 23, 42, 0.45);
+  --bar-border: 1px solid rgba(255, 255, 255, 0.12);
+  --chip-bg: rgba(255, 255, 255, 0.1);
+  --chip-border: 1px solid rgba(255, 255, 255, 0.14);
+  --chip-active-bg: rgba(255, 255, 255, 0.26);
+  --chip-active-color: #ffffff;
+  --chip-active-border: 1px solid rgba(255, 255, 255, 0.45);
+
+  --input-bg: rgba(255, 255, 255, 0.14);
+  --input-border: 1px solid rgba(255, 255, 255, 0.2);
+  --dropdown-bg: rgba(22, 32, 50, 0.95);
+  --modal-bg: rgba(10, 15, 26, 0.75);
+  --modal-card-bg: rgba(22, 32, 50, 0.88);
+  --card-divider: rgba(255, 255, 255, 0.08);
+
+  --svg-stroke-subtle: rgba(255, 255, 255, 0.25);
+  --svg-stroke-strong: rgba(255, 255, 255, 0.45);
+  --svg-center-dot: #ffffff;
+}
+
+/* Light Theme Mode: White / Light Backgrounds -> High Contrast Black Text & UI */
+[data-theme-mode="light"] {
+  --color-text-primary: #0f172a;
+  --color-text-secondary: #334155;
+  --color-text-tertiary: #64748b;
+  --color-text-blue: #0284c7;
+
+  --glass-bg: rgba(255, 255, 255, 0.72);
+  --glass-border: 1px solid rgba(15, 23, 42, 0.14);
+  --glass-border-subtle: 1px solid rgba(15, 23, 42, 0.08);
+  --glass-blur: blur(24px) saturate(160%);
+  --glass-shadow: 0 10px 32px 0 rgba(15, 23, 42, 0.08);
+
+  --text-shadow-subtle: none;
+  --text-shadow-hero: none;
+
+  --bar-bg: rgba(255, 255, 255, 0.85);
+  --bar-border: 1px solid rgba(15, 23, 42, 0.12);
+  --chip-bg: rgba(15, 23, 42, 0.06);
+  --chip-border: 1px solid rgba(15, 23, 42, 0.12);
+  --chip-active-bg: rgba(15, 23, 42, 0.14);
+  --chip-active-color: #0f172a;
+  --chip-active-border: 1px solid rgba(15, 23, 42, 0.3);
+
+  --input-bg: rgba(255, 255, 255, 0.95);
+  --input-border: 1px solid rgba(15, 23, 42, 0.2);
+  --dropdown-bg: rgba(255, 255, 255, 0.98);
+  --modal-bg: rgba(15, 23, 42, 0.45);
+  --modal-card-bg: rgba(255, 255, 255, 0.96);
+  --card-divider: rgba(15, 23, 42, 0.1);
+
+  --svg-stroke-subtle: rgba(15, 23, 42, 0.2);
+  --svg-stroke-strong: rgba(15, 23, 42, 0.45);
+  --svg-center-dot: #0f172a;
 }
 
 /* Base resets */
@@ -57,11 +106,16 @@ body {
   overflow-x: hidden;
   position: relative;
   text-shadow: var(--text-shadow-subtle);
+  transition: color var(--transition-normal);
+}
+
+[data-theme-mode="light"] body {
+  background-color: #f8fafc;
 }
 
 /* Accessibility focus styles */
 :focus-visible {
-  outline: 2px solid rgba(255, 255, 255, 0.85);
+  outline: 2px solid var(--color-text-primary);
   outline-offset: 2px;
 }
 
@@ -89,7 +143,8 @@ input {
   border-radius: var(--card-radius);
   padding: var(--card-padding);
   box-shadow: var(--glass-shadow);
-  transition: transform var(--transition-fast), background-color var(--transition-normal);
+  color: var(--color-text-primary);
+  transition: transform var(--transition-fast), background-color var(--transition-normal), border-color var(--transition-normal), color var(--transition-normal);
   position: relative;
   overflow: hidden;
 }
@@ -124,12 +179,12 @@ input {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: rgba(255, 255, 255, 0.2);
+  background: var(--color-text-tertiary);
   border-radius: 999px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: rgba(255, 255, 255, 0.4);
+  background: var(--color-text-secondary);
 }
 
 /* Motion reduction */

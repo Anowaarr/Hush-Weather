@@ -1,6 +1,14 @@
 import React from 'react';
 import { X, Check } from 'lucide-react';
-import { UnitsConfig, TemperatureUnit, SpeedUnit, PrecipitationUnit, PressureUnit, DistanceUnit } from '../../types/units';
+import {
+  UnitsConfig,
+  TemperatureUnit,
+  SpeedUnit,
+  PrecipitationUnit,
+  PressureUnit,
+  DistanceUnit,
+  AppearanceMode,
+} from '../../types/units';
 import './UnitsModal.css';
 
 interface UnitsModalProps {
@@ -23,7 +31,7 @@ export const UnitsModal: React.FC<UnitsModalProps> = ({
       className="units-modal-overlay"
       role="dialog"
       aria-modal="true"
-      aria-label="Measurement units settings"
+      aria-label="Measurement units and appearance settings"
     >
       <div className="units-modal-card">
         <div className="units-modal-header">
@@ -31,6 +39,42 @@ export const UnitsModal: React.FC<UnitsModalProps> = ({
           <button className="places-close-btn" onClick={onClose} aria-label="Close units modal">
             <X size={18} />
           </button>
+        </div>
+
+        {/* Appearance & Contrast */}
+        <div className="units-group">
+          <div className="units-group-label">Appearance (Contrast Mode)</div>
+          <div className="units-segmented-control" role="radiogroup" aria-label="Appearance mode">
+            <button
+              className={`units-segment-btn ${units.appearance === 'auto' ? 'active' : ''}`}
+              role="radio"
+              aria-checked={units.appearance === 'auto'}
+              onClick={() => onUpdateUnits({ appearance: 'auto' as AppearanceMode })}
+            >
+              Auto (Weather)
+            </button>
+            <button
+              className={`units-segment-btn ${units.appearance === 'light' ? 'active' : ''}`}
+              role="radio"
+              aria-checked={units.appearance === 'light'}
+              onClick={() => onUpdateUnits({ appearance: 'light' as AppearanceMode })}
+            >
+              Light (Black UI)
+            </button>
+            <button
+              className={`units-segment-btn ${units.appearance === 'dark' ? 'active' : ''}`}
+              role="radio"
+              aria-checked={units.appearance === 'dark'}
+              onClick={() => onUpdateUnits({ appearance: 'dark' as AppearanceMode })}
+            >
+              Dark (White UI)
+            </button>
+          </div>
+          <div style={{ fontSize: '11px', color: 'var(--color-text-tertiary)', marginTop: '6px' }}>
+            {units.appearance === 'auto' && 'Automatically adapts: light theme with dark text during snow/fog/bright days, dark theme at night.'}
+            {units.appearance === 'light' && 'Forces clean light background with sharp high-contrast dark text and controls.'}
+            {units.appearance === 'dark' && 'Forces dark sky gradient with crisp white text and glowing controls.'}
+          </div>
         </div>
 
         {/* Temperature */}
@@ -151,16 +195,18 @@ export const UnitsModal: React.FC<UnitsModalProps> = ({
         <button
           style={{
             width: '100%',
-            marginTop: '8px',
+            marginTop: '12px',
             padding: '12px',
             borderRadius: '12px',
-            background: 'rgba(255, 255, 255, 0.16)',
-            color: '#ffffff',
+            background: 'var(--chip-active-bg)',
+            border: 'var(--chip-active-border)',
+            color: 'var(--chip-active-color)',
             fontWeight: 600,
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
             gap: '8px',
+            cursor: 'pointer',
           }}
           onClick={onClose}
         >

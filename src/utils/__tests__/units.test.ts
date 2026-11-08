@@ -13,6 +13,7 @@ import {
   degreesToCompass,
   getUVIndexCategory,
   calculateDewPoint,
+  resolveThemeMode,
 } from '../units';
 
 describe('Unit Conversion Utilities', () => {
@@ -79,5 +80,14 @@ describe('Unit Conversion Utilities', () => {
     const dp = calculateDewPoint(20, 50);
     expect(dp).toBeGreaterThan(8.5);
     expect(dp).toBeLessThan(10.0);
+  });
+
+  it('resolves theme mode correctly based on appearance and weather', () => {
+    expect(resolveThemeMode('light', 'clear-night')).toBe('light');
+    expect(resolveThemeMode('dark', 'snow')).toBe('dark');
+    expect(resolveThemeMode('auto', 'snow')).toBe('light');
+    expect(resolveThemeMode('auto', 'fog')).toBe('light');
+    expect(resolveThemeMode('auto', 'clear-night')).toBe('dark');
+    expect(resolveThemeMode('auto', 'clear-day')).toBe('dark');
   });
 });

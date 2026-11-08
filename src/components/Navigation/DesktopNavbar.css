@@ -22,7 +22,7 @@
     gap: 10px;
     font-size: 20px;
     font-weight: 700;
-    color: #ffffff;
+    color: var(--color-text-primary);
     text-shadow: var(--text-shadow-hero);
     flex-shrink: 0;
   }
@@ -34,7 +34,7 @@
     border-radius: 999px;
     background: rgba(96, 205, 255, 0.2);
     border: 1px solid rgba(96, 205, 255, 0.4);
-    color: #60cdff;
+    color: var(--color-text-blue);
   }
 
   .desktop-center-search {
@@ -46,12 +46,12 @@
   .desktop-search-input {
     width: 100%;
     height: 42px;
-    background: rgba(255, 255, 255, 0.14);
-    border: 1px solid rgba(255, 255, 255, 0.2);
+    background: var(--input-bg);
+    border: var(--input-border);
     border-radius: 12px;
     padding: 0 40px;
     font-size: 14px;
-    color: #ffffff;
+    color: var(--color-text-primary);
     outline: none;
     transition: all var(--transition-fast);
     backdrop-filter: blur(16px);
@@ -59,9 +59,9 @@
   }
 
   .desktop-search-input:focus {
-    background: rgba(255, 255, 255, 0.22);
-    border-color: rgba(255, 255, 255, 0.4);
-    box-shadow: 0 0 12px rgba(255, 255, 255, 0.15);
+    background: var(--glass-bg);
+    border-color: var(--color-text-blue);
+    box-shadow: 0 0 12px rgba(96, 205, 255, 0.2);
   }
 
   .desktop-search-icon {
@@ -69,7 +69,7 @@
     left: 14px;
     top: 50%;
     transform: translateY(-50%);
-    color: rgba(255, 255, 255, 0.6);
+    color: var(--color-text-tertiary);
     pointer-events: none;
   }
 
@@ -78,12 +78,12 @@
     top: 48px;
     left: 0;
     right: 0;
-    background: rgba(22, 32, 50, 0.95);
+    background: var(--dropdown-bg);
     backdrop-filter: blur(28px);
     -webkit-backdrop-filter: blur(28px);
-    border: 1px solid rgba(255, 255, 255, 0.2);
+    border: var(--glass-border);
     border-radius: 14px;
-    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.45);
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.25);
     overflow: hidden;
     z-index: 50;
   }
@@ -101,9 +101,9 @@
     gap: 8px;
     padding: 8px 14px;
     border-radius: 12px;
-    background: rgba(255, 255, 255, 0.12);
-    border: 1px solid rgba(255, 255, 255, 0.16);
-    color: #ffffff;
+    background: var(--chip-bg);
+    border: var(--chip-border);
+    color: var(--color-text-primary);
     font-size: 13px;
     font-weight: 600;
     cursor: pointer;
@@ -113,16 +113,16 @@
   }
 
   .desktop-action-btn:hover {
-    background: rgba(255, 255, 255, 0.22);
-    border-color: rgba(255, 255, 255, 0.3);
+    background: var(--chip-active-bg);
+    border: var(--chip-active-border);
     transform: translateY(-1px);
   }
 
   .desktop-unit-toggle {
     display: flex;
     align-items: center;
-    background: rgba(0, 0, 0, 0.3);
-    border: 1px solid rgba(255, 255, 255, 0.15);
+    background: var(--chip-bg);
+    border: var(--chip-border);
     border-radius: 10px;
     padding: 2px;
   }
@@ -137,8 +137,8 @@
   }
 
   .desktop-unit-btn.active {
-    background: rgba(255, 255, 255, 0.25);
-    color: #ffffff;
+    background: var(--chip-active-bg);
+    color: var(--chip-active-color);
   }
 
   /* Desktop Quick Places Toolbar */
@@ -168,23 +168,23 @@
     border-radius: 999px;
     font-size: 13px;
     font-weight: 500;
-    background: rgba(255, 255, 255, 0.1);
-    border: 1px solid rgba(255, 255, 255, 0.14);
+    background: var(--chip-bg);
+    border: var(--chip-border);
     color: var(--color-text-secondary);
     white-space: nowrap;
     transition: all var(--transition-fast);
   }
 
   .desktop-place-chip:hover {
-    background: rgba(255, 255, 255, 0.18);
-    color: #ffffff;
+    background: var(--chip-active-bg);
+    color: var(--color-text-primary);
   }
 
   .desktop-place-chip.active {
-    background: rgba(255, 255, 255, 0.26);
-    border-color: rgba(255, 255, 255, 0.45);
-    color: #ffffff;
+    background: var(--chip-active-bg);
+    border: var(--chip-active-border);
+    color: var(--chip-active-color);
     font-weight: 600;
-    box-shadow: 0 0 12px rgba(255, 255, 255, 0.15);
+    box-shadow: 0 0 12px rgba(96, 205, 255, 0.2);
   }
 }

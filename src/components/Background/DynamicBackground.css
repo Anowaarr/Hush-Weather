@@ -23,7 +23,7 @@
   pointer-events: none !important;
 }
 
-/* Theme Gradients */
+/* Dark Themes (Default) */
 .theme-clear-day {
   background: linear-gradient(180deg, #2e78c7 0%, #4a9be0 45%, #69b4f0 100%);
 }
@@ -61,6 +61,41 @@
   background: linear-gradient(180deg, #7f8b97 0%, #9ba6b0 50%, #b8c1ca 100%);
 }
 
+/* Light Theme Mode Gradients: When background is light/white, UI is dark */
+[data-theme-mode="light"] .theme-snow {
+  background: linear-gradient(180deg, #f1f5f9 0%, #e2e8f0 40%, #ffffff 100%);
+}
+
+[data-theme-mode="light"] .theme-fog {
+  background: linear-gradient(180deg, #e2e8f0 0%, #cbd5e1 50%, #f8fafc 100%);
+}
+
+[data-theme-mode="light"] .theme-clear-day {
+  background: linear-gradient(180deg, #93c5fd 0%, #bae6fd 50%, #f0f9ff 100%);
+}
+
+[data-theme-mode="light"] .theme-partly-cloudy-day {
+  background: linear-gradient(180deg, #cbd5e1 0%, #e2e8f0 50%, #ffffff 100%);
+}
+
+[data-theme-mode="light"] .theme-cloudy,
+[data-theme-mode="light"] .theme-overcast {
+  background: linear-gradient(180deg, #94a3b8 0%, #cbd5e1 50%, #f1f5f9 100%);
+}
+
+[data-theme-mode="light"] .theme-rain {
+  background: linear-gradient(180deg, #94a3b8 0%, #cbd5e1 50%, #e2e8f0 100%);
+}
+
+[data-theme-mode="light"] .theme-thunderstorm {
+  background: linear-gradient(180deg, #64748b 0%, #94a3b8 50%, #cbd5e1 100%);
+}
+
+[data-theme-mode="light"] .theme-clear-night,
+[data-theme-mode="light"] .theme-partly-cloudy-night {
+  background: linear-gradient(180deg, #475569 0%, #64748b 50%, #94a3b8 100%);
+}
+
 /* Subtle atmospheric overlay for depth */
 .atmospheric-vignette {
   position: absolute;
@@ -71,4 +106,8 @@
   background: radial-gradient(circle at 50% 20%, rgba(255, 255, 255, 0.12) 0%, rgba(0, 0, 0, 0.22) 100%);
   pointer-events: none;
   z-index: 2;
+}
+
+[data-theme-mode="light"] .atmospheric-vignette {
+  background: radial-gradient(circle at 50% 20%, rgba(255, 255, 255, 0.45) 0%, rgba(15, 23, 42, 0.05) 100%);
 }

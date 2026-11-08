@@ -187,6 +187,7 @@ export function getDefaultUnits(): UnitsConfig {
       precipitation: 'inch',
       pressure: 'inHg',
       distance: 'mi',
+      appearance: 'auto',
     };
   }
 
@@ -196,5 +197,20 @@ export function getDefaultUnits(): UnitsConfig {
     precipitation: 'mm',
     pressure: 'hPa',
     distance: 'km',
+    appearance: 'auto',
   };
+}
+
+export function resolveThemeMode(
+  appearance: 'auto' | 'dark' | 'light',
+  theme: string
+): 'dark' | 'light' {
+  if (appearance === 'light') return 'light';
+  if (appearance === 'dark') return 'dark';
+  // In 'auto' mode:
+  // Weather conditions with naturally bright/light skies (snow, fog) use light mode!
+  if (theme === 'snow' || theme === 'fog') {
+    return 'light';
+  }
+  return 'dark';
 }

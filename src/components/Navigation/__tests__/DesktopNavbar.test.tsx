@@ -15,6 +15,7 @@ const mockUnits: UnitsConfig = {
   precipitation: 'mm',
   pressure: 'hPa',
   distance: 'km',
+  appearance: 'auto',
 };
 
 describe('DesktopNavbar Component', () => {

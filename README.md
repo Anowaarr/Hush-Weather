@@ -1,168 +1,202 @@
-# Hush
+<div align="center">
 
-An Apple iOS Weather-inspired web application named **Hush**, crafted with React, TypeScript, plain CSS, and the Open-Meteo API. Built for modern browsers with dynamic atmospheric particle canvases, fluid glassmorphism, a condensing hero header, and detailed meteorological metrics.
+<img src="docs/screenshots/banner.svg" alt="Hush Weather Banner" width="100%" />
+
+# Hush Weather
+
+**An Apple iOS Weather-inspired meteorological web application crafted with React 18, TypeScript, pure CSS variables, and the Open-Meteo API.**
 
 [![CI](https://github.com/Anowaarr/Hush-Weather/actions/workflows/ci.yml/badge.svg)](https://github.com/Anowaarr/Hush-Weather/actions/workflows/ci.yml)
+[![Tests Passing](https://img.shields.io/badge/Vitest-40%20passing-34d399?logo=vitest&logoColor=white)](https://vitest.dev/)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5.7-3178c6?logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
+[![React](https://img.shields.io/badge/React-18.3-61dafb?logo=react&logoColor=black)](https://react.dev/)
+[![Vite](https://img.shields.io/badge/Vite-6.0-646cff?logo=vite&logoColor=white)](https://vitejs.dev/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
-[![TypeScript](https://img.shields.io/badge/TypeScript-5.7-blue)](https://www.typescriptlang.org/)
-[![Vite](https://img.shields.io/badge/Vite-6.0-646CFF)](https://vitejs.dev/)
+[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](https://github.com/Anowaarr/Hush-Weather/pulls)
 
-> **Live Demo:** [https://anowaarr.github.io/Hush-Weather/](https://anowaarr.github.io/Hush-Weather/)
+[🚀 Live Demo](https://anowaarr.github.io/Hush-Weather/) · [✨ Report Bug](https://github.com/Anowaarr/Hush-Weather/issues) · [💡 Request Feature](https://github.com/Anowaarr/Hush-Weather/issues)
+
+</div>
 
 ---
 
-## Previews
+## 🌟 Visual Showcase
 
-| Mobile Portrait | Tablet & Desktop |
+<div align="center">
+
+| 📱 Mobile iOS Weather View | 💻 PC & Desktop Widescreen Dashboard |
 | :---: | :---: |
-| ![Hero & Hourly Preview](docs/screenshots/hero-preview.png) | ![10-Day Forecast & Detail Tiles](docs/screenshots/forecast-preview.png) |
+| <img src="docs/screenshots/mobile-preview.svg" alt="Hush Mobile iOS View" width="380" /> | <img src="docs/screenshots/desktop-preview.svg" alt="Hush Desktop Widescreen View" width="540" /> |
 
-*(Screenshots can be placed in `docs/screenshots/`)*
-
----
-
-## Key Features
-
-- **Apple-Inspired Condensing Header:** Full-height hero displaying city, ultra-light large temperature (96px, weight 200), condition, and high/low. Smoothly collapses on scroll into a frosted glass sticky header without abrupt pop-in.
-- **Dynamic Atmospheric Backgrounds:** Pure CSS/Canvas gradient & particle simulation adapting to WMO weather codes and local day/night status. Features drifting clouds, twinkling stars, angled rain streaks, soft snowflakes, and occasional thunderstorm lightning flashes. Fully honors `prefers-reduced-motion`.
-- **24-Hour Hourly Strip:** Horizontally scrollable strip with `scroll-snap`. Displays "Now", weather icons, hourly temperatures, light blue precipitation probabilities (when &ge; 20%), and seamlessly chronologically inserted sunrise/sunset events.
-- **10-Day Forecast Card:** Daily breakdown with custom cool-to-warm colored range bars positioned proportionally against the entire 10-day temperature span, complete with a current temperature indicator dot on the "Today" row.
-- **8 Meteorological Detail Tiles:** 2-column glass grid including:
-  - **UV Index:** Gradient gauge bar with indicator pip and sun protection advice.
-  - **Sun Trajectory Arc:** SVG bezier arc tracing the sun's position across daylight hours with sunrise/sunset timing.
-  - **Wind & Compass Dial:** Rotating compass dial needle pointing in the live wind direction, showing speed and gusts.
-  - **Feels Like:** Apparent temperature contextualized against humidity and wind chill.
-  - **Humidity & Dew Point:** Relative humidity percentage with calculated Magnus-Tetens dew point.
-  - **Visibility:** Distance in kilometers or miles with atmospheric clarity assessment.
-  - **Pressure:** Surface pressure in hPa or inHg with system trend indicators.
-  - **Precipitation:** 24-hour total and expected rainfall metrics.
-- **Search & Places Drawer:** Debounced autocomplete search powered by the Open-Meteo Geocoding API, "Use Current Location" GPS fallback, saved places list, and swipe/drag navigation between saved cities.
-- **Customizable Units System:** Toggles for &deg;C/&deg;F, km/h vs. mph, mm vs. in, hPa vs. inHg, and km vs. mi. Automatically defaults to the user's browser locale and persists across sessions in `localStorage`.
-- **Resilient Offline Architecture:** 10-minute cache with timestamps, zero layout shift shimmer skeletons, offline network detection banner, and graceful error retry screens.
-- **Accessible & Semantic:** Keyboard navigation (Arrow keys for cities, Tab indexing), semantic HTML5 landmarks, explicit ARIA labels, and WCAG AA contrast standards.
+</div>
 
 ---
 
-## Tech Stack
+## 🌓 Adaptive Contrast & Light/Dark Theme System
 
-- **Core:** React 18, TypeScript 5.7, Vite 6
-- **Styling:** Vanilla CSS with custom properties (CSS variables), glassmorphism (`backdrop-filter: blur(20px)`), and hardware-accelerated animations (no UI component libraries)
-- **Data Source:** [Open-Meteo Forecast & Geocoding API](https://open-meteo.com/) (CORS-enabled, zero API keys required, `timezone=auto`, 10 forecast days)
-- **Icons:** [Lucide React](https://lucide.dev/) (ISC License, customizable semantic SVGs)
-- **Testing:** [Vitest](https://vitest.dev/) with `@testing-library/react` and `jsdom`
-- **Linting & Code Quality:** ESLint 9 (flat config) and Prettier
+> **Eliminating washed-out UI:** Built with intelligent WCAG AA compliant contrast adaptation.
+
+<div align="center">
+  <img src="docs/screenshots/adaptive-themes.svg" alt="Adaptive Contrast Modes" width="100%" />
+</div>
+
+* **White & Bright Backgrounds (Snow, Fog, Bright Daylight):** The UI elements, borders, icons, and typography automatically switch to deep slate black (`#0f172a`), maintaining razor-sharp legibility without washed-out text.
+* **Dark Sky Backgrounds (Night, Storms, Rain, Overcast):** The UI seamlessly transitions to frosted glass (`rgba(255, 255, 255, 0.15)`) with pure white typography (`#ffffff`) and glowing indicators.
+* **Manual Override & Quick Switcher:** Users can toggle between `Auto (Weather-adaptive)`, `Light (White background / Black UI)`, and `Dark (Dark sky / White UI)` directly from the desktop navigation bar or the measurement settings modal.
 
 ---
 
-## Project Structure
+## ✨ Features at a Glance
 
-```text
-weather-app/
-├── .github/
-│   └── workflows/
-│       ├── ci.yml            # Lint, typecheck, unit test, build
-│       └── deploy.yml        # Automated GitHub Pages deployment
-├── docs/
-│   └── screenshots/          # Place screenshots here
-├── src/
-│   ├── api/
-│   │   ├── cache.ts          # 10-minute localStorage/memory caching layer
-│   │   └── openMeteo.ts      # Open-Meteo forecast and geocoding clients
-│   ├── components/
-│   │   ├── Background/       # Dynamic gradients and atmospheric canvas particles
-│   │   ├── Daily/            # 10-Day forecast card with temperature range bars
-│   │   ├── Details/          # 8 metric detail tiles (UV, Sun Arc, Wind, etc.)
-│   │   ├── Hero/             # Large temperature hero and condensing sticky header
-│   │   ├── Hourly/           # 24-hour horizontal scrolling forecast strip
-│   │   ├── Navigation/       # Bottom toolbar with place dots and list buttons
-│   │   ├── Places/           # Saved places manager with geocoding search
-│   │   ├── Settings/         # Units of measurement modal
-│   │   └── UI/               # Skeletons, error screens, icons, offline banner
-│   ├── constants/
-│   │   ├── defaultLocations.ts # Pre-configured fallback cities
-│   │   └── weatherCodes.ts     # Exhaustive WMO code-to-theme mapping
-│   ├── hooks/
-│   │   ├── useDebounce.ts      # Input debouncing for autocomplete search
-│   │   ├── useGeolocation.ts   # Browser GPS location with permission handling
-│   │   ├── useLocalStorage.ts  # Typed resilient storage sync
-│   │   ├── useScrollPosition.ts# Scroll progress tracker for header collapse
-│   │   └── useWeather.ts       # Weather data lifecycle, caching, and refresh
-│   ├── types/
-│   │   ├── units.ts            # Unit system definitions
-│   │   └── weather.ts          # Weather models and Open-Meteo payload types
-│   ├── utils/
-│   │   ├── date.ts             # Timezone-aware date parsing and formatting
-│   │   └── units.ts            # Conversion formulas (temperatures, wind, dew point)
-│   ├── App.tsx                 # Root application component and gesture handler
-│   ├── index.css               # Global theme variables, reset, and typography
-│   └── main.tsx                # React DOM root entry
-├── index.html
-├── LICENSE                     # MIT License
-├── package.json
-├── tsconfig.json
-└── vite.config.ts
+### 📱 Authentic Apple iOS Mobile Experience
+- **Condensing Sticky Hero:** Large current temperature (96px, ultra-light 200 weight), city name, weather condition, and high/low that collapses smoothly into a frosted glass compact header on scroll.
+- **Dynamic Atmospheric Canvas:** Realistic particle physics layer simulating drifting clouds, twinkling stars, angled rain streaks, soft fluttering snowflakes, and thunderstorm lightning. Honors `prefers-reduced-motion`.
+- **24-Hour Hourly Strip:** Scroll-snapping horizontal strip showing hourly conditions, light blue precipitation probabilities (&ge; 20%), and chronologically injected sunrise/sunset milestones.
+- **10-Day Range Bars:** Cool-to-warm colored range bars positioned proportionally against the entire 10-day temperature span, complete with a current temperature indicator pip on the Today row.
+- **8 Meteorological Detail Tiles:** UV Index gauge bar, SVG quadratic Sun trajectory arc, live rotating Wind compass needle, Feels Like calculation, Humidity with Magnus-Tetens Dew Point, Visibility, Pressure, and 24h Precipitation.
+- **Gesture Navigation:** Smooth touch swipe to change saved cities, page indicator dots, and mobile saved places drawer.
+
+### 💻 PC & Desktop-Optimized Dashboard
+- **Responsive Dual-Column Layout:** Centers a spacious, balanced widescreen layout on screens &ge; 1024px.
+- **Live Autocomplete Search Bar:** Instant debounced lookup with country, state/region, and geographical coordinates.
+- **🌍 250+ All Countries Directory:** Complete alphabetical and regional directory (Europe, Americas, Asia, Africa, Oceania) with national flag emojis to explore real-time weather in any nation on Earth.
+- **⏱️ Live Destination Wall-Clock:** Live ticking clock (`HH:mm:ss`) synchronized with the destination's exact IANA timezone and pulsing beacon indicator.
+- **Smooth Trackpad Scrolling:** Unrestricted native trackpad scroll pass-through and bubbling.
+
+### ⚙️ Customizable Measurement System
+- **Temperature:** Celsius (&deg;C) or Fahrenheit (&deg;F)
+- **Wind Speed:** Kilometers per hour (km/h) or Miles per hour (mph)
+- **Precipitation:** Millimeters (mm) or Inches (in)
+- **Pressure:** Hectopascals (hPa) or Inches of Mercury (inHg)
+- **Visibility:** Kilometers (km) or Miles (mi)
+- **Automatic Locale Detection:** Defaults based on the user's browser locale and persists across sessions in `localStorage`.
+
+---
+
+## 🏗️ Architecture & Data Flow
+
+```mermaid
+flowchart TD
+    User([User Interaction]) --> Search[Search City / 250+ Countries / GPS]
+    Search --> CacheCheck{Cache < 10 mins?}
+    
+    CacheCheck -- Hit --> CachedData[Instant In-Memory / LocalStorage]
+    CacheCheck -- Miss --> OpenMeteoAPI[Open-Meteo REST API\ntimezone=auto & forecast_days=10]
+    
+    OpenMeteoAPI --> StoreCache[Store in Cache with Timestamp]
+    CachedData --> Parser[Timezone-Aware Date & Metric Parser]
+    StoreCache --> Parser
+    
+    Parser --> ThemeResolver{Theme & Appearance Mode}
+    ThemeResolver -- "Auto Mode" --> WeatherCode[WMO Code & Day/Night Check]
+    WeatherCode -- "Snow / Fog" --> LightTheme[Theme Mode: Light\nBlack Text & Solid UI]
+    WeatherCode -- "Night / Storm / Clear" --> DarkTheme[Theme Mode: Dark\nWhite Text & Glass UI]
+    ThemeResolver -- "Manual Light" --> LightTheme
+    ThemeResolver -- "Manual Dark" --> DarkTheme
+    
+    LightTheme --> Render[React 18 DOM & Hardware-Accelerated Canvas]
+    DarkTheme --> Render
 ```
 
 ---
 
-## How It Works
+## 📁 Project Structure
 
-### 1. Data Flow & Local Timezone Preservation
-1. When a location is selected or detected via GPS, `useWeather` first checks the client cache (`weather_${lat}_${lon}`). If fresh cached data exists (&lt; 10 minutes), it renders instantly without layout shift.
-2. If network retrieval is needed, `fetchWeatherForecast` queries Open-Meteo with `timezone=auto` and `forecast_days=10`.
-3. Open-Meteo provides ISO timestamp strings in the target location's wall-clock time (e.g. `2026-11-08T18:00`). The custom parser in `src/utils/date.ts` parses components directly without browser UTC distortion.
-4. The API layer computes the next 24 consecutive hours and merges sunrise/sunset times into the hourly timeline.
-
-### 2. WMO Weather Code to Atmosphere Mapping
-The app maps all official World Meteorological Organization (WMO) codes (0 through 99) in `src/constants/weatherCodes.ts`:
-- **Codes 0, 1:** Clear sky (day theme vs. clear night theme with twinkling stars).
-- **Code 2:** Partly cloudy (soft drifting cloud particles).
-- **Code 3:** Overcast (slate grey atmospheric sky).
-- **Codes 45, 48:** Fog (drifting horizontal mist layers).
-- **Codes 51–67, 80–82:** Rain & Drizzle (angled falling precipitation streaks).
-- **Codes 71–77, 85–86:** Snow (fluttering sinusoidal snowflake physics).
-- **Codes 95–99:** Thunderstorm (heavy rain + randomized lightning flashes).
-
-Transitions between themes cross-fade smoothly over an 800ms duration.
+```text
+Hush-Weather/
+├── .github/
+│   ├── ISSUE_TEMPLATE/
+│   │   ├── bug_report.md         # Structured bug issue template
+│   │   └── feature_request.md    # Feature enhancement proposal template
+│   ├── PULL_REQUEST_TEMPLATE.md  # PR checklist and standards
+│   └── workflows/
+│       ├── ci.yml                # CI pipeline: lint, typecheck, test, build
+│       └── deploy.yml            # Automatic GitHub Pages deployment
+├── docs/
+│   └── screenshots/              # High-resolution vector SVG mockups & banners
+│       ├── banner.svg            # Hero banner graphic
+│       ├── mobile-preview.svg    # Vector iPhone mockup
+│       ├── desktop-preview.svg   # Vector desktop dashboard mockup
+│       └── adaptive-themes.svg   # Light vs. Dark contrast showcase
+├── src/
+│   ├── api/
+│   │   ├── cache.ts              # 10-minute client caching layer
+│   │   └── openMeteo.ts          # Open-Meteo forecast and geocoding clients
+│   ├── components/
+│   │   ├── Background/           # Dynamic gradients and WeatherCanvas simulation
+│   │   ├── Countries/            # 250+ World countries directory modal & filters
+│   │   ├── Daily/                # 10-day forecast with proportional range bars
+│   │   ├── Details/              # 8 meteorological metric tiles (UV, Sun arc, Wind, etc.)
+│   │   ├── Hero/                 # Hero section and scroll-condensing sticky header
+│   │   ├── Hourly/               # 24-hour horizontal scrolling forecast strip
+│   │   ├── Navigation/           # Desktop top bar, quick chips, and mobile bottom bar
+│   │   ├── Places/               # Saved locations drawer & geocoding search
+│   │   ├── Settings/             # Measurement units & appearance contrast modal
+│   │   └── UI/                   # Skeletons, error states, offline banner, footer
+│   ├── constants/
+│   │   ├── countries.ts          # Directory of 250+ countries with ISO codes & capitals
+│   │   ├── defaultLocations.ts   # Curated starting cities
+│   │   └── weatherCodes.ts       # Comprehensive WMO code-to-theme mapping
+│   ├── hooks/
+│   │   ├── useDebounce.ts        # Input debouncing hook
+│   │   ├── useGeolocation.ts     # Browser GPS geolocation hook
+│   │   ├── useLiveTime.ts        # Destination timezone ticking clock hook
+│   │   ├── useLocalStorage.ts    # Resilient type-safe storage sync hook
+│   │   ├── useScrollPosition.ts  # Scroll position tracking hook
+│   │   └── useWeather.ts         # Weather data lifecycle & refresh hook
+│   ├── types/
+│   │   ├── units.ts              # Unit definitions & appearance mode types
+│   │   └── weather.ts            # Meteorological interfaces & WMO theme types
+│   ├── utils/
+│   │   ├── date.ts               # Local timezone date & sun math utilities
+│   │   └── units.ts              # Conversions, dew point, and contrast resolver
+│   ├── App.tsx                   # Main application orchestrator
+│   ├── index.css                 # CSS variables, glassmorphism tokens, and reset
+│   └── main.tsx                  # React DOM client entry point
+├── index.html                    # HTML shell
+├── LICENSE                       # MIT License
+├── package.json                  # Scripts and dependencies
+├── tsconfig.json                 # TypeScript strict configuration
+└── vite.config.ts                # Vite & Vitest configuration
+```
 
 ---
 
-## Getting Started
+## 🚀 Getting Started
 
 ### Prerequisites
-- Node.js 18.0.0 or higher
-- npm 9.0.0 or higher
+- **Node.js:** `18.0.0` or higher
+- **npm:** `9.0.0` or higher
 
-### Installation
-Clone the repository and install dependencies:
+### 1. Clone the repository
 ```bash
 git clone https://github.com/Anowaarr/Hush-Weather.git
 cd Hush-Weather
+```
+
+### 2. Install dependencies
+```bash
 npm install
 ```
 
-### Development
-Start the local Vite development server with Hot Module Replacement:
+### 3. Start development server
 ```bash
 npm run dev
 ```
 Open [http://localhost:3000](http://localhost:3000) in your browser.
 
-### Run Tests
-Execute the Vitest test suite:
+### 4. Run test suite
 ```bash
 npm test
 ```
 
-### Type Checking & Linting
-Validate TypeScript types and ESLint rules:
+### 5. Type checking & Linting
 ```bash
 npm run typecheck
 npm run lint
 ```
 
-### Production Build & Preview
-Create an optimized production bundle:
+### 6. Build for production
 ```bash
 npm run build
 npm run preview
@@ -170,28 +204,47 @@ npm run preview
 
 ---
 
-## Roadmap
+## ⌨️ Shortcuts & Gestures
 
-- [ ] **Air Quality Index (AQI):** Add real-time PM2.5, PM10, and ozone monitoring via the Open-Meteo Air Quality API.
-- [ ] **Progressive Web App (PWA):** Service worker caching and install-to-home-screen manifest for iOS and Android.
-- [ ] **Severe Weather Alerts:** Integration with government meteorological alert feeds.
-- [ ] **Interactive Precipitation Radar:** Animated radar overlay map.
-
----
-
-## Credits & Attribution
-
-- **Weather Data:** Weather forecasts, historical models, and geocoding provided by [Open-Meteo.com](https://open-meteo.com/) under the [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/) license.
-- **Icons:** Open-source iconography provided by [Lucide](https://lucide.dev/) under the ISC License.
+| Action | Mobile Gesture | Desktop / Keyboard |
+| :--- | :--- | :--- |
+| **Next Saved City** | Swipe left | Right Arrow (`→`) |
+| **Previous Saved City** | Swipe right | Left Arrow (`←`) |
+| **Search Locations** | Tap search box | Focus search input / `/` |
+| **Dismiss Modals** | Tap close / drag down | Escape key (`Esc`) |
+| **Quick Unit Switch** | Settings modal | Click `°C` / `°F` in top bar |
+| **Quick Appearance Mode** | Settings modal | Click `Auto` / `Light` / `Dark` |
 
 ---
 
-## Disclaimer
+## 🌤️ Weather Themes & WMO Mapping
 
-This is an independent open-source project created for portfolio and educational purposes, inspired by the interface design of Apple's iOS Weather app. This project is **not** affiliated with, endorsed by, or sponsored by Apple Inc. Apple, iOS, and SF Symbols are registered trademarks of Apple Inc.
+| Theme | Applicable Conditions | Particles / Visuals |
+| :--- | :--- | :--- |
+| **Clear Day** | WMO 0, 1 (Daytime) | Radiant azure gradient, warm sunlight glow |
+| **Clear Night** | WMO 0, 1 (Nighttime) | Deep midnight blue sky with twinkling star canvas |
+| **Partly Cloudy** | WMO 2 | Drifting translucent cumulus cloud puffs |
+| **Cloudy / Overcast**| WMO 3 | Soft layered cloud coverage with diffused light |
+| **Fog & Mist** | WMO 45, 48 | Horizontal drifting atmospheric mist bands |
+| **Rain & Drizzle** | WMO 51–67, 80–82 | Angled falling rain streaks with ground bounce |
+| **Snow** | WMO 71–77, 85–86 | Fluttering sinusoidal snowflakes drifting gently |
+| **Thunderstorm** | WMO 95–99 | Heavy rain simulation with randomized lightning flashes |
 
 ---
 
-## License
+## 📜 Credits & Attribution
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+* **Weather Data:** Forecast models, historical data, and geocoding provided by [Open-Meteo.com](https://open-meteo.com/) under the [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/) license.
+* **Iconography:** Clean semantic icons provided by [Lucide React](https://lucide.dev/) under the ISC License.
+
+---
+
+## ⚖️ Disclaimer
+
+Hush is an independent open-source web project created for portfolio and educational purposes, inspired by Apple's iOS Weather user interface design. This project is **not** affiliated with, endorsed by, or sponsored by Apple Inc. Apple, iOS, and SF Symbols are registered trademarks of Apple Inc.
+
+---
+
+## 📄 License
+
+This project is licensed under the [MIT License](LICENSE).

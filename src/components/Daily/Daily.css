@@ -19,7 +19,7 @@
 }
 
 .daily-row:not(:last-child) {
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  border-bottom: 1px solid var(--card-divider);
   padding-bottom: 10px;
 }
 
@@ -58,6 +58,10 @@
   margin: 0 4px;
 }
 
+[data-theme-mode="light"] .daily-range-bar-container {
+  background: rgba(15, 23, 42, 0.12);
+}
+
 .daily-range-bar {
   position: absolute;
   top: 0;
@@ -72,9 +76,9 @@
   width: 7px;
   height: 7px;
   border-radius: 50%;
-  background: #ffffff;
-  border: 1.5px solid #233142;
-  box-shadow: 0 0 4px rgba(255, 255, 255, 0.9), 0 1px 3px rgba(0, 0, 0, 0.4);
+  background: var(--color-text-primary);
+  border: 1.5px solid var(--dropdown-bg);
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.2), 0 1px 3px rgba(0, 0, 0, 0.4);
   transform: translate(-50%, -50%);
   z-index: 2;
 }

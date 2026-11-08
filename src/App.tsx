@@ -1,9 +1,9 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { Place, WeatherTheme } from './types/weather';
-import { UnitsConfig, TemperatureUnit } from './types/units';
+import { UnitsConfig, TemperatureUnit, AppearanceMode } from './types/units';
 import { DEFAULT_PLACES } from './constants/defaultLocations';
 import { getWeatherCodeInfo } from './constants/weatherCodes';
-import { getDefaultUnits } from './utils/units';
+import { getDefaultUnits, resolveThemeMode } from './utils/units';
 import { useLocalStorage } from './hooks/useLocalStorage';
 import { useGeolocation } from './hooks/useGeolocation';
 import { useWeather } from './hooks/useWeather';
@@ -44,11 +44,12 @@ export default function App() {
   const { requestLocation, loading: isLocating } = useGeolocation();
   const scrollY = useScrollPosition();
 
-  // Active theme
+  // Active theme & appearance mode
   const currentCodeInfo = weather
     ? getWeatherCodeInfo(weather.current.weatherCode, weather.current.isDay)
     : null;
   const activeTheme: WeatherTheme = currentCodeInfo ? currentCodeInfo.theme : 'clear-day';
+  const themeMode = resolveThemeMode(units.appearance, activeTheme);
 
   // Keyboard navigation: left/right arrows to switch places
   useEffect(() => {
@@ -135,14 +136,19 @@ export default function App() {
     setUnits((prev) => ({ ...prev, temperature: newUnit }));
   }, [setUnits]);
 
+  const handleToggleAppearance = useCallback((mode: AppearanceMode) => {
+    setUnits((prev) => ({ ...prev, appearance: mode }));
+  }, [setUnits]);
+
   return (
     <div
       className="app-viewport"
+      data-theme-mode={themeMode}
       onTouchStart={handleTouchStart}
       onTouchEnd={handleTouchEnd}
     >
       <OfflineBanner />
-      <DynamicBackground theme={activeTheme} />
+      <DynamicBackground theme={activeTheme} themeMode={themeMode} />
 
       {/* PC / Desktop Navbar (Visible on screens >= 1024px) */}
       <DesktopNavbar
@@ -155,6 +161,7 @@ export default function App() {
         onOpenSettings={() => setIsSettingsOpen(true)}
         onUseCurrentLocation={handleUseCurrentLocation}
         onToggleTempUnit={handleToggleTempUnit}
+        onToggleAppearance={handleToggleAppearance}
         isLocating={isLocating}
       />
 

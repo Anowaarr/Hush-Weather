@@ -10,6 +10,7 @@ const mockUnits: UnitsConfig = {
   precipitation: 'mm',
   pressure: 'hPa',
   distance: 'km',
+  appearance: 'auto',
 };
 
 const mockWeather: WeatherData = {

@@ -125,11 +125,11 @@ export const DetailTiles: React.FC<DetailTilesProps> = ({ weather, units }) => {
           <div className="detail-big-value">{nextSunTime}</div>
           <svg className="sun-arc-svg" viewBox="0 0 100 44" aria-hidden="true">
             {/* Horizon baseline */}
-            <line x1="6" y1="38" x2="94" y2="38" stroke="rgba(255,255,255,0.2)" strokeWidth="1" strokeDasharray="3 3" />
+            <line x1="6" y1="38" x2="94" y2="38" stroke="currentColor" strokeOpacity="0.25" strokeWidth="1" strokeDasharray="3 3" />
             {/* Trajectory arc */}
-            <path d="M 10 38 Q 50 6 90 38" fill="none" stroke="rgba(255, 255, 255, 0.35)" strokeWidth="1.5" />
+            <path d="M 10 38 Q 50 6 90 38" fill="none" stroke="currentColor" strokeOpacity="0.45" strokeWidth="1.5" />
             {/* Sun position marker */}
-            <circle cx={sunArcX} cy={sunArcY} r="4" fill="#ffd54f" stroke="#ffffff" strokeWidth="1.5" filter="drop-shadow(0 0 3px #ffb300)" />
+            <circle cx={sunArcX} cy={sunArcY} r="4" fill="#ffd54f" stroke="currentColor" strokeWidth="1.5" filter="drop-shadow(0 0 3px #ffb300)" />
           </svg>
         </div>
         <div className="detail-explaining-text">

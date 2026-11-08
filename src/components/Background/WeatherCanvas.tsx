@@ -3,6 +3,7 @@ import { WeatherTheme } from '../../types/weather';
 
 interface WeatherCanvasProps {
   theme: WeatherTheme;
+  themeMode?: 'dark' | 'light';
 }
 
 interface Particle {
@@ -16,7 +17,7 @@ interface Particle {
   phase?: number;
 }
 
-export const WeatherCanvas: React.FC<WeatherCanvasProps> = ({ theme }) => {
+export const WeatherCanvas: React.FC<WeatherCanvasProps> = ({ theme, themeMode = 'dark' }) => {
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
 
   useEffect(() => {
@@ -128,7 +129,7 @@ export const WeatherCanvas: React.FC<WeatherCanvasProps> = ({ theme }) => {
       ctx.clearRect(0, 0, width, height);
 
       if (theme === 'clear-night') {
-        ctx.fillStyle = '#ffffff';
+        ctx.fillStyle = themeMode === 'light' ? '#334155' : '#ffffff';
         for (const p of particles) {
           p.opacity += p.opacitySpeed ?? 0.01;
           if (p.opacity > 1) {
@@ -152,14 +153,16 @@ export const WeatherCanvas: React.FC<WeatherCanvasProps> = ({ theme }) => {
             lightningTimer = 0;
           }
           if (lightningActive > 0) {
-            ctx.fillStyle = `rgba(235, 245, 255, ${lightningActive})`;
+            ctx.fillStyle = themeMode === 'light'
+              ? `rgba(203, 213, 225, ${lightningActive})`
+              : `rgba(235, 245, 255, ${lightningActive})`;
             ctx.fillRect(0, 0, width, height);
             lightningActive *= 0.82;
             if (lightningActive < 0.02) lightningActive = 0;
           }
         }
 
-        ctx.strokeStyle = 'rgba(215, 235, 255, 0.6)';
+        ctx.strokeStyle = themeMode === 'light' ? 'rgba(71, 85, 105, 0.5)' : 'rgba(215, 235, 255, 0.6)';
         ctx.lineWidth = 1.2;
         for (const p of particles) {
           p.y += p.speedY;
@@ -175,7 +178,7 @@ export const WeatherCanvas: React.FC<WeatherCanvasProps> = ({ theme }) => {
           ctx.stroke();
         }
       } else if (theme === 'snow') {
-        ctx.fillStyle = '#ffffff';
+        ctx.fillStyle = themeMode === 'light' ? 'rgba(100, 116, 139, 0.8)' : '#ffffff';
         for (const p of particles) {
           p.phase = (p.phase ?? 0) + 0.02;
           p.x += Math.sin(p.phase) * 0.7 + p.speedX;
@@ -190,7 +193,7 @@ export const WeatherCanvas: React.FC<WeatherCanvasProps> = ({ theme }) => {
           ctx.fill();
         }
       } else if (theme === 'cloudy' || theme === 'partly-cloudy-day' || theme === 'partly-cloudy-night') {
-        ctx.fillStyle = 'rgba(255, 255, 255, 0.8)';
+        ctx.fillStyle = themeMode === 'light' ? 'rgba(100, 116, 139, 0.22)' : 'rgba(255, 255, 255, 0.8)';
         for (const p of particles) {
           p.x += p.speedX;
           if (p.x - p.size > width) {
@@ -204,7 +207,7 @@ export const WeatherCanvas: React.FC<WeatherCanvasProps> = ({ theme }) => {
           ctx.fill();
         }
       } else if (theme === 'fog') {
-        ctx.fillStyle = 'rgba(230, 240, 250, 0.4)';
+        ctx.fillStyle = themeMode === 'light' ? 'rgba(100, 116, 139, 0.2)' : 'rgba(230, 240, 250, 0.4)';
         for (const p of particles) {
           p.x += p.speedX;
           if (p.x - p.size > width) {
@@ -227,7 +230,7 @@ export const WeatherCanvas: React.FC<WeatherCanvasProps> = ({ theme }) => {
       window.removeEventListener('resize', handleResize);
       cancelAnimationFrame(animationFrameId);
     };
-  }, [theme]);
+  }, [theme, themeMode]);
 
   return (
     <canvas

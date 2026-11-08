@@ -1,0 +1,228 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 500" width="100%" height="100%">
+  <defs>
+    <!-- Background Gradients -->
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0a0f1d" />
+      <stop offset="50%" stop-color="#0f172a" />
+      <stop offset="100%" stop-color="#1e1b4b" />
+    </linearGradient>
+
+    <radialGradient id="glowCyan" cx="25%" cy="35%" r="45%">
+      <stop offset="0%" stop-color="#38bdf8" stop-opacity="0.35" />
+      <stop offset="100%" stop-color="#38bdf8" stop-opacity="0" />
+    </radialGradient>
+
+    <radialGradient id="glowPurple" cx="80%" cy="40%" r="50%">
+      <stop offset="0%" stop-color="#818cf8" stop-opacity="0.3" />
+      <stop offset="100%" stop-color="#818cf8" stop-opacity="0" />
+    </radialGradient>
+
+    <radialGradient id="glowAmber" cx="55%" cy="85%" r="40%">
+      <stop offset="0%" stop-color="#f59e0b" stop-opacity="0.25" />
+      <stop offset="100%" stop-color="#f59e0b" stop-opacity="0" />
+    </radialGradient>
+
+    <!-- Glass Fill -->
+    <linearGradient id="glassCard" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="rgba(255, 255, 255, 0.16)" />
+      <stop offset="100%" stop-color="rgba(255, 255, 255, 0.05)" />
+    </linearGradient>
+
+    <!-- Glass Stroke -->
+    <linearGradient id="glassStroke" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="rgba(255, 255, 255, 0.35)" />
+      <stop offset="100%" stop-color="rgba(255, 255, 255, 0.1)" />
+    </linearGradient>
+
+    <!-- Text Gradients -->
+    <linearGradient id="titleGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#ffffff" />
+      <stop offset="60%" stop-color="#f8fafc" />
+      <stop offset="100%" stop-color="#38bdf8" />
+    </linearGradient>
+
+    <linearGradient id="barGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#5ea8f5" />
+      <stop offset="40%" stop-color="#70c5ff" />
+      <stop offset="70%" stop-color="#a8d56b" />
+      <stop offset="90%" stop-color="#f5c144" />
+      <stop offset="100%" stop-color="#ff8342" />
+    </linearGradient>
+
+    <filter id="shadowBlur" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="16" stdDeviation="24" flood-color="#000000" flood-opacity="0.5" />
+    </filter>
+
+    <filter id="badgeShadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#000000" flood-opacity="0.3" />
+    </filter>
+  </defs>
+
+  <style>
+    .font-title { font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", Roboto, sans-serif; font-weight: 800; }
+    .font-sub { font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, sans-serif; font-weight: 400; }
+    .font-mono { font-family: "SF Mono", Menlo, Consolas, Monaco, monospace; }
+  </style>
+
+  <!-- Background Base -->
+  <rect width="1200" height="500" fill="url(#bgGrad)" />
+  <rect width="1200" height="500" fill="url(#glowCyan)" />
+  <rect width="1200" height="500" fill="url(#glowPurple)" />
+  <rect width="1200" height="500" fill="url(#glowAmber)" />
+
+  <!-- Subtle Grid lines -->
+  <g stroke="rgba(255,255,255,0.03)" stroke-width="1">
+    <line x1="0" y1="100" x2="1200" y2="100" />
+    <line x1="0" y1="200" x2="1200" y2="200" />
+    <line x1="0" y1="300" x2="1200" y2="300" />
+    <line x1="0" y1="400" x2="1200" y2="400" />
+    <line x1="200" y1="0" x2="200" y2="500" />
+    <line x1="400" y1="0" x2="400" y2="500" />
+    <line x1="600" y1="0" x2="600" y2="500" />
+    <line x1="800" y1="0" x2="800" y2="500" />
+    <line x1="1000" y1="0" x2="1000" y2="500" />
+  </g>
+
+  <!-- Left Content Column -->
+  <!-- Top Category Chip -->
+  <g transform="translate(80, 70)" filter="url(#badgeShadow)">
+    <rect width="210" height="34" rx="17" fill="rgba(56, 189, 248, 0.15)" stroke="rgba(56, 189, 248, 0.4)" stroke-width="1" />
+    <circle cx="18" cy="17" r="5" fill="#38bdf8" />
+    <text x="32" y="22" fill="#38bdf8" class="font-sub" font-size="12" font-weight="600" letter-spacing="0.08em">APPLE WEATHER UI</text>
+  </g>
+
+  <!-- Title -->
+  <text x="80" y="160" fill="url(#titleGrad)" class="font-title" font-size="64" letter-spacing="-0.03em">Hush Weather</text>
+
+  <!-- Subtitle -->
+  <text x="80" y="205" fill="#94a3b8" class="font-sub" font-size="20" font-weight="400">Minimalist, iOS-inspired weather dashboard with real-time conditions,</text>
+  <text x="80" y="235" fill="#94a3b8" class="font-sub" font-size="20" font-weight="400">world country exploration, and adaptive contrast glassmorphism.</text>
+
+  <!-- Feature Tags -->
+  <g transform="translate(80, 275)">
+    <!-- Tag 1 -->
+    <rect x="0" y="0" width="130" height="36" rx="10" fill="rgba(255,255,255,0.08)" stroke="rgba(255,255,255,0.14)" />
+    <text x="14" y="23" fill="#e2e8f0" class="font-sub" font-size="13" font-weight="500">⚛️ React 18</text>
+
+    <!-- Tag 2 -->
+    <rect x="142" y="0" width="140" height="36" rx="10" fill="rgba(255,255,255,0.08)" stroke="rgba(255,255,255,0.14)" />
+    <text x="156" y="23" fill="#e2e8f0" class="font-sub" font-size="13" font-weight="500">🛡️ TypeScript</text>
+
+    <!-- Tag 3 -->
+    <rect x="294" y="0" width="110" height="36" rx="10" fill="rgba(255,255,255,0.08)" stroke="rgba(255,255,255,0.14)" />
+    <text x="308" y="23" fill="#e2e8f0" class="font-sub" font-size="13" font-weight="500">⚡ Vite 6</text>
+
+    <!-- Tag 4 -->
+    <rect x="416" y="0" width="160" height="36" rx="10" fill="rgba(255,255,255,0.08)" stroke="rgba(255,255,255,0.14)" />
+    <text x="430" y="23" fill="#e2e8f0" class="font-sub" font-size="13" font-weight="500">🌐 Open-Meteo</text>
+  </g>
+
+  <!-- Tag row 2 -->
+  <g transform="translate(80, 325)">
+    <rect x="0" y="0" width="170" height="36" rx="10" fill="rgba(255,255,255,0.08)" stroke="rgba(255,255,255,0.14)" />
+    <text x="14" y="23" fill="#e2e8f0" class="font-sub" font-size="13" font-weight="500">🌓 Adaptive Modes</text>
+
+    <rect x="182" y="0" width="195" height="36" rx="10" fill="rgba(255,255,255,0.08)" stroke="rgba(255,255,255,0.14)" />
+    <text x="196" y="23" fill="#e2e8f0" class="font-sub" font-size="13" font-weight="500">🌍 250+ All Countries</text>
+
+    <rect x="389" y="0" width="187" height="36" rx="10" fill="rgba(255,255,255,0.08)" stroke="rgba(255,255,255,0.14)" />
+    <text x="403" y="23" fill="#e2e8f0" class="font-sub" font-size="13" font-weight="500">⏱️ Live Destination Time</text>
+  </g>
+
+  <!-- Stats / Badges Bottom Strip -->
+  <g transform="translate(80, 400)">
+    <circle cx="8" cy="8" r="4" fill="#34d399" />
+    <text x="22" y="12" fill="#94a3b8" class="font-mono" font-size="13">40/40 Unit Tests Passing</text>
+
+    <circle cx="230" cy="8" r="4" fill="#60cdff" />
+    <text x="244" y="12" fill="#94a3b8" class="font-mono" font-size="13">10-Minute Client Cache</text>
+
+    <circle cx="450" cy="8" r="4" fill="#f472b6" />
+    <text x="464" y="12" fill="#94a3b8" class="font-mono" font-size="13">Zero External UI Kits</text>
+  </g>
+
+  <!-- Right Floating Glass Mockup Card -->
+  <g transform="translate(770, 50)" filter="url(#shadowBlur)">
+    <!-- Phone / Mini Card container -->
+    <rect width="350" height="400" rx="32" fill="url(#glassCard)" stroke="url(#glassStroke)" stroke-width="1.5" />
+
+    <!-- Card Header / City -->
+    <g transform="translate(30, 45)">
+      <!-- Pulsing live clock badge -->
+      <rect x="0" y="0" width="130" height="24" rx="12" fill="rgba(15,23,42,0.5)" stroke="rgba(255,255,255,0.15)" />
+      <circle cx="12" cy="12" r="3.5" fill="#34d399" />
+      <text x="24" y="16" fill="#e2e8f0" class="font-mono" font-size="11" font-weight="600">14:45:12 JST</text>
+
+      <!-- City & Temp -->
+      <text x="0" y="56" fill="#ffffff" class="font-title" font-size="28" font-weight="700">Tokyo</text>
+      <text x="0" y="74" fill="rgba(255,255,255,0.7)" class="font-sub" font-size="14">Japan</text>
+      <text x="190" y="75" fill="#ffffff" class="font-title" font-size="64" font-weight="200">24°</text>
+
+      <!-- Condition -->
+      <text x="0" y="105" fill="#93c5fd" class="font-sub" font-size="15" font-weight="600">Partly Cloudy</text>
+      <text x="0" y="126" fill="rgba(255,255,255,0.7)" class="font-sub" font-size="13">H: 28°   L: 19°</text>
+    </g>
+
+    <!-- Mini Hourly Strip -->
+    <g transform="translate(24, 195)">
+      <rect width="302" height="74" rx="16" fill="rgba(255,255,255,0.1)" stroke="rgba(255,255,255,0.12)" />
+      
+      <!-- Hour 1 -->
+      <text x="24" y="22" fill="rgba(255,255,255,0.7)" class="font-sub" font-size="11" text-anchor="middle">Now</text>
+      <circle cx="24" cy="38" r="6" fill="#fbbf24" />
+      <text x="24" y="60" fill="#ffffff" class="font-sub" font-size="13" font-weight="600" text-anchor="middle">24°</text>
+
+      <!-- Hour 2 -->
+      <text x="84" y="22" fill="rgba(255,255,255,0.7)" class="font-sub" font-size="11" text-anchor="middle">15:00</text>
+      <circle cx="84" cy="38" r="6" fill="#fbbf24" />
+      <text x="84" y="60" fill="#ffffff" class="font-sub" font-size="13" font-weight="600" text-anchor="middle">24°</text>
+
+      <!-- Hour 3 Sunset -->
+      <text x="151" y="22" fill="#fdba74" class="font-sub" font-size="11" font-weight="600" text-anchor="middle">17:14</text>
+      <text x="151" y="42" fill="#fb923c" class="font-sub" font-size="14" text-anchor="middle">🌇</text>
+      <text x="151" y="60" fill="#fdba74" class="font-sub" font-size="11" text-anchor="middle">Sunset</text>
+
+      <!-- Hour 4 -->
+      <text x="218" y="22" fill="rgba(255,255,255,0.7)" class="font-sub" font-size="11" text-anchor="middle">18:00</text>
+      <circle cx="218" cy="38" r="6" fill="#94a3b8" />
+      <text x="218" y="60" fill="#ffffff" class="font-sub" font-size="13" font-weight="600" text-anchor="middle">22°</text>
+
+      <!-- Hour 5 -->
+      <text x="278" y="22" fill="rgba(255,255,255,0.7)" class="font-sub" font-size="11" text-anchor="middle">19:00</text>
+      <circle cx="278" cy="38" r="6" fill="#94a3b8" />
+      <text x="278" y="60" fill="#ffffff" class="font-sub" font-size="13" font-weight="600" text-anchor="middle">21°</text>
+    </g>
+
+    <!-- Mini 10-Day Forecast Row -->
+    <g transform="translate(24, 285)">
+      <rect width="302" height="88" rx="16" fill="rgba(255,255,255,0.1)" stroke="rgba(255,255,255,0.12)" />
+      
+      <!-- Row 1: Today -->
+      <g transform="translate(16, 26)">
+        <text x="0" y="0" fill="#ffffff" class="font-sub" font-size="13" font-weight="600">Today</text>
+        <circle cx="64" cy="-4" r="5" fill="#fbbf24" />
+        <text x="96" y="0" fill="rgba(255,255,255,0.7)" class="font-sub" font-size="12">19°</text>
+        
+        <!-- Range Bar -->
+        <rect x="124" y="-7" width="105" height="5" rx="2.5" fill="rgba(0,0,0,0.3)" />
+        <rect x="135" y="-7" width="85" height="5" rx="2.5" fill="url(#barGrad)" />
+        <!-- Current Temp Pip -->
+        <circle cx="178" cy="-4.5" r="3.5" fill="#ffffff" stroke="#1e293b" stroke-width="1.5" />
+
+        <text x="242" y="0" fill="#ffffff" class="font-sub" font-size="12" font-weight="600">28°</text>
+      </g>
+
+      <!-- Row 2: Tomorrow -->
+      <g transform="translate(16, 58)">
+        <text x="0" y="0" fill="#ffffff" class="font-sub" font-size="13" font-weight="500">Mon</text>
+        <text x="64" y="0" fill="#60cdff" class="font-sub" font-size="12">🌧️</text>
+        <text x="96" y="0" fill="rgba(255,255,255,0.7)" class="font-sub" font-size="12">17°</text>
+        
+        <rect x="124" y="-7" width="105" height="5" rx="2.5" fill="rgba(0,0,0,0.3)" />
+        <rect x="128" y="-7" width="70" height="5" rx="2.5" fill="url(#barGrad)" />
+
+        <text x="242" y="0" fill="#ffffff" class="font-sub" font-size="12" font-weight="600">24°</text>
+      </g>
+    </g>
+  </g>
+</svg>

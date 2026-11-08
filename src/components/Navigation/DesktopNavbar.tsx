@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { Search, Globe2, Navigation, Settings2, X, CloudSun } from 'lucide-react';
+import { Search, Globe2, Navigation, Settings2, X, CloudSun, Sun, Moon, Sparkles } from 'lucide-react';
 import { Place } from '../../types/weather';
-import { UnitsConfig, TemperatureUnit } from '../../types/units';
+import { UnitsConfig, TemperatureUnit, AppearanceMode } from '../../types/units';
 import { useDebounce } from '../../hooks/useDebounce';
 import { searchPlaces } from '../../api/openMeteo';
 import './DesktopNavbar.css';
@@ -16,6 +16,7 @@ interface DesktopNavbarProps {
   onOpenSettings: () => void;
   onUseCurrentLocation: () => void;
   onToggleTempUnit: (unit: TemperatureUnit) => void;
+  onToggleAppearance?: (mode: AppearanceMode) => void;
   isLocating: boolean;
 }
 
@@ -29,6 +30,7 @@ export const DesktopNavbar: React.FC<DesktopNavbarProps> = ({
   onOpenSettings,
   onUseCurrentLocation,
   onToggleTempUnit,
+  onToggleAppearance,
   isLocating,
 }) => {
   const [query, setQuery] = useState('');
@@ -174,6 +176,42 @@ export const DesktopNavbar: React.FC<DesktopNavbarProps> = ({
               °F
             </button>
           </div>
+
+          {/* Quick Appearance Mode Toggle */}
+          {onToggleAppearance && (
+            <div className="desktop-unit-toggle" role="radiogroup" aria-label="Quick appearance mode">
+              <button
+                className={`desktop-unit-btn ${units.appearance === 'auto' ? 'active' : ''}`}
+                role="radio"
+                aria-checked={units.appearance === 'auto'}
+                onClick={() => onToggleAppearance('auto')}
+                title="Auto (Weather-adaptive contrast)"
+              >
+                <Sparkles size={13} style={{ verticalAlign: 'middle', marginRight: '3px' }} />
+                Auto
+              </button>
+              <button
+                className={`desktop-unit-btn ${units.appearance === 'light' ? 'active' : ''}`}
+                role="radio"
+                aria-checked={units.appearance === 'light'}
+                onClick={() => onToggleAppearance('light')}
+                title="Light mode (white background / black UI)"
+              >
+                <Sun size={13} style={{ verticalAlign: 'middle', marginRight: '3px' }} />
+                Light
+              </button>
+              <button
+                className={`desktop-unit-btn ${units.appearance === 'dark' ? 'active' : ''}`}
+                role="radio"
+                aria-checked={units.appearance === 'dark'}
+                onClick={() => onToggleAppearance('dark')}
+                title="Dark mode (dark background / white UI)"
+              >
+                <Moon size={13} style={{ verticalAlign: 'middle', marginRight: '3px' }} />
+                Dark
+              </button>
+            </div>
+          )}
 
           {/* Full Settings */}
           <button

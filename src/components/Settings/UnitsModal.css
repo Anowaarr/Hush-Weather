@@ -4,7 +4,7 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background: rgba(10, 15, 26, 0.75);
+  background: var(--modal-bg);
   backdrop-filter: blur(28px) saturate(180%);
   -webkit-backdrop-filter: blur(28px) saturate(180%);
   z-index: 60;
@@ -17,14 +17,17 @@
 
 .units-modal-card {
   width: 100%;
-  max-width: 420px;
-  background: rgba(30, 41, 59, 0.85);
+  max-width: 440px;
+  background: var(--modal-card-bg);
   backdrop-filter: blur(24px);
   -webkit-backdrop-filter: blur(24px);
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  border: var(--glass-border);
   border-radius: 24px;
   padding: 24px;
-  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.45);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.35);
+  color: var(--color-text-primary);
+  max-height: 90vh;
+  overflow-y: auto;
 }
 
 .units-modal-header {
@@ -38,6 +41,7 @@
   font-size: 20px;
   font-weight: 600;
   letter-spacing: -0.01em;
+  color: var(--color-text-primary);
 }
 
 .units-group {
@@ -55,16 +59,16 @@
 
 .units-segmented-control {
   display: flex;
-  background: rgba(0, 0, 0, 0.25);
+  background: var(--chip-bg);
   border-radius: 12px;
   padding: 3px;
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  border: var(--chip-border);
 }
 
 .units-segment-btn {
   flex: 1;
   padding: 8px 12px;
-  font-size: 14px;
+  font-size: 13px;
   font-weight: 500;
   border-radius: 9px;
   color: var(--color-text-secondary);
@@ -73,8 +77,9 @@
 }
 
 .units-segment-btn.active {
-  background: rgba(255, 255, 255, 0.2);
-  color: #ffffff;
+  background: var(--chip-active-bg);
+  border: var(--chip-active-border);
+  color: var(--chip-active-color);
   font-weight: 600;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
 }

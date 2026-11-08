@@ -5,9 +5,10 @@ import './DynamicBackground.css';
 
 interface DynamicBackgroundProps {
   theme: WeatherTheme;
+  themeMode?: 'dark' | 'light';
 }
 
-export const DynamicBackground: React.FC<DynamicBackgroundProps> = ({ theme }) => {
+export const DynamicBackground: React.FC<DynamicBackgroundProps> = ({ theme, themeMode = 'dark' }) => {
   const [currentTheme, setCurrentTheme] = useState<WeatherTheme>(theme);
   const [prevTheme, setPrevTheme] = useState<WeatherTheme | null>(null);
   const [isCrossFading, setIsCrossFading] = useState(false);
@@ -40,7 +41,7 @@ export const DynamicBackground: React.FC<DynamicBackgroundProps> = ({ theme }) =
         style={{ opacity: isCrossFading ? 1 : 1 }}
       />
       <div className="atmospheric-vignette" />
-      <WeatherCanvas theme={currentTheme} />
+      <WeatherCanvas theme={currentTheme} themeMode={themeMode} />
     </div>
   );
 };

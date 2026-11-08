@@ -58,6 +58,10 @@
   margin: 10px 0 8px 0;
 }
 
+[data-theme-mode="light"] .uv-bar-container {
+  background: rgba(15, 23, 42, 0.12);
+}
+
 .uv-bar-gradient {
   width: 100%;
   height: 100%;
@@ -106,6 +110,11 @@
   flex-shrink: 0;
 }
 
+[data-theme-mode="light"] .wind-compass-dial {
+  background: rgba(15, 23, 42, 0.08);
+  border-color: rgba(15, 23, 42, 0.15);
+}
+
 .compass-cardinal {
   position: absolute;
   font-size: 8px;
@@ -134,14 +143,14 @@
   height: 0;
   border-left: 3px solid transparent;
   border-right: 3px solid transparent;
-  border-bottom: 12px solid #60cdff;
+  border-bottom: 12px solid #0284c7;
 }
 
 .compass-center-dot {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #ffffff;
+  background: var(--color-text-primary);
   z-index: 2;
 }
 
