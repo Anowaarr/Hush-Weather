@@ -1,0 +1,190 @@
+.desktop-nav {
+  display: none;
+}
+
+@media (min-width: 1024px) {
+  .desktop-nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 1240px;
+    margin: 0 auto;
+    padding: 18px 24px 10px 24px;
+    position: relative;
+    z-index: 25;
+    gap: 20px;
+  }
+
+  .desktop-brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 20px;
+    font-weight: 700;
+    color: #ffffff;
+    text-shadow: var(--text-shadow-hero);
+    flex-shrink: 0;
+  }
+
+  .desktop-brand-badge {
+    font-size: 11px;
+    font-weight: 600;
+    padding: 2px 8px;
+    border-radius: 999px;
+    background: rgba(96, 205, 255, 0.2);
+    border: 1px solid rgba(96, 205, 255, 0.4);
+    color: #60cdff;
+  }
+
+  .desktop-center-search {
+    position: relative;
+    flex: 1;
+    max-width: 480px;
+  }
+
+  .desktop-search-input {
+    width: 100%;
+    height: 42px;
+    background: rgba(255, 255, 255, 0.14);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 12px;
+    padding: 0 40px;
+    font-size: 14px;
+    color: #ffffff;
+    outline: none;
+    transition: all var(--transition-fast);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+  }
+
+  .desktop-search-input:focus {
+    background: rgba(255, 255, 255, 0.22);
+    border-color: rgba(255, 255, 255, 0.4);
+    box-shadow: 0 0 12px rgba(255, 255, 255, 0.15);
+  }
+
+  .desktop-search-icon {
+    position: absolute;
+    left: 14px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: rgba(255, 255, 255, 0.6);
+    pointer-events: none;
+  }
+
+  .desktop-search-dropdown {
+    position: absolute;
+    top: 48px;
+    left: 0;
+    right: 0;
+    background: rgba(22, 32, 50, 0.95);
+    backdrop-filter: blur(28px);
+    -webkit-backdrop-filter: blur(28px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 14px;
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.45);
+    overflow: hidden;
+    z-index: 50;
+  }
+
+  .desktop-actions {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-shrink: 0;
+  }
+
+  .desktop-action-btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 14px;
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.12);
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    color: #ffffff;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    transition: all var(--transition-fast);
+  }
+
+  .desktop-action-btn:hover {
+    background: rgba(255, 255, 255, 0.22);
+    border-color: rgba(255, 255, 255, 0.3);
+    transform: translateY(-1px);
+  }
+
+  .desktop-unit-toggle {
+    display: flex;
+    align-items: center;
+    background: rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 10px;
+    padding: 2px;
+  }
+
+  .desktop-unit-btn {
+    padding: 4px 10px;
+    font-size: 12px;
+    font-weight: 600;
+    border-radius: 8px;
+    color: var(--color-text-secondary);
+    transition: all var(--transition-fast);
+  }
+
+  .desktop-unit-btn.active {
+    background: rgba(255, 255, 255, 0.25);
+    color: #ffffff;
+  }
+
+  /* Desktop Quick Places Toolbar */
+  .desktop-places-bar {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    width: 100%;
+    max-width: 1240px;
+    margin: 0 auto 16px auto;
+    padding: 0 24px;
+    overflow-x: auto;
+    position: relative;
+    z-index: 20;
+    scrollbar-width: none;
+  }
+
+  .desktop-places-bar::-webkit-scrollbar {
+    display: none;
+  }
+
+  .desktop-place-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 14px;
+    border-radius: 999px;
+    font-size: 13px;
+    font-weight: 500;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    color: var(--color-text-secondary);
+    white-space: nowrap;
+    transition: all var(--transition-fast);
+  }
+
+  .desktop-place-chip:hover {
+    background: rgba(255, 255, 255, 0.18);
+    color: #ffffff;
+  }
+
+  .desktop-place-chip.active {
+    background: rgba(255, 255, 255, 0.26);
+    border-color: rgba(255, 255, 255, 0.45);
+    color: #ffffff;
+    font-weight: 600;
+    box-shadow: 0 0 12px rgba(255, 255, 255, 0.15);
+  }
+}

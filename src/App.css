@@ -9,6 +9,7 @@
   overflow-x: hidden;
 }
 
+/* Mobile Layout (< 1024px) */
 .weather-content {
   width: 100%;
   max-width: 420px;
@@ -53,9 +54,59 @@
   }
 }
 
-/* Wide screen 2-column layout enhancement */
+/* Desktop PC Layout (>= 1024px) */
 @media (min-width: 1024px) {
+  /* Hide mobile bottom floating bar on desktop */
+  .bottom-bar {
+    display: none;
+  }
+
+  /* Desktop spacious two-column container */
   .weather-content {
-    max-width: 480px;
+    max-width: 1240px;
+    padding: 10px 24px 60px 24px;
+    display: grid;
+    grid-template-columns: 420px minmax(0, 1fr);
+    grid-template-areas:
+      "hero hourly"
+      "daily details"
+      "daily footer";
+    gap: 20px;
+    align-items: start;
+  }
+
+  .weather-hero-area {
+    grid-area: hero;
+  }
+
+  .weather-daily-area {
+    grid-area: daily;
+  }
+
+  .weather-hourly-area {
+    grid-area: hourly;
+  }
+
+  .weather-details-area {
+    grid-area: details;
+  }
+
+  .weather-footer-area {
+    grid-area: footer;
+  }
+
+  /* Expand detail tiles into a beautiful 4-column grid on desktop */
+  .detail-grid {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 14px;
+  }
+
+  .detail-tile {
+    min-height: 160px;
+  }
+
+  /* On desktop, sticky header is not needed because desktop navbar is fixed/sticky */
+  .sticky-header {
+    display: none;
   }
 }

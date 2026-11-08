@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { Place, WeatherTheme } from './types/weather';
-import { UnitsConfig } from './types/units';
+import { UnitsConfig, TemperatureUnit } from './types/units';
 import { DEFAULT_PLACES } from './constants/defaultLocations';
 import { getWeatherCodeInfo } from './constants/weatherCodes';
 import { getDefaultUnits } from './utils/units';
@@ -15,7 +15,9 @@ import { HourlyForecast } from './components/Hourly/HourlyForecast';
 import { TenDayForecast } from './components/Daily/TenDayForecast';
 import { DetailTiles } from './components/Details/DetailTiles';
 import { BottomBar } from './components/Navigation/BottomBar';
+import { DesktopNavbar } from './components/Navigation/DesktopNavbar';
 import { PlacesModal } from './components/Places/PlacesModal';
+import { CountryPickerModal } from './components/Countries/CountryPickerModal';
 import { UnitsModal } from './components/Settings/UnitsModal';
 import { WeatherSkeleton } from './components/UI/Skeleton';
 import { ErrorState } from './components/UI/ErrorState';
@@ -32,6 +34,7 @@ export default function App() {
 
   const [isPlacesOpen, setIsPlacesOpen] = useState(false);
   const [isSettingsOpen, setIsSettingsOpen] = useState(false);
+  const [isCountryPickerOpen, setIsCountryPickerOpen] = useState(false);
 
   // Safe active place selection
   const safeIndex = Math.min(Math.max(0, activePlaceIndex), Math.max(0, places.length - 1));
@@ -50,7 +53,7 @@ export default function App() {
   // Keyboard navigation: left/right arrows to switch places
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
-      if (isPlacesOpen || isSettingsOpen) return;
+      if (isPlacesOpen || isSettingsOpen || isCountryPickerOpen) return;
       if (e.key === 'ArrowRight') {
         setActivePlaceIndex((prev) => (prev + 1) % places.length);
       } else if (e.key === 'ArrowLeft') {
@@ -60,7 +63,7 @@ export default function App() {
 
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
-  }, [places.length, isPlacesOpen, isSettingsOpen, setActivePlaceIndex]);
+  }, [places.length, isPlacesOpen, isSettingsOpen, isCountryPickerOpen, setActivePlaceIndex]);
 
   // Touch swipe gesture handling
   const touchStartX = useRef<number | null>(null);
@@ -128,6 +131,10 @@ export default function App() {
     }
   }, [requestLocation, setActivePlaceIndex, setPlaces]);
 
+  const handleToggleTempUnit = useCallback((newUnit: TemperatureUnit) => {
+    setUnits((prev) => ({ ...prev, temperature: newUnit }));
+  }, [setUnits]);
+
   return (
     <div
       className="app-viewport"
@@ -137,9 +144,25 @@ export default function App() {
       <OfflineBanner />
       <DynamicBackground theme={activeTheme} />
 
+      {/* PC / Desktop Navbar (Visible on screens >= 1024px) */}
+      <DesktopNavbar
+        places={places}
+        activePlaceId={activePlace.id}
+        units={units}
+        onSelectPlace={handleSelectPlace}
+        onAddPlace={handleAddPlace}
+        onOpenCountryPicker={() => setIsCountryPickerOpen(true)}
+        onOpenSettings={() => setIsSettingsOpen(true)}
+        onUseCurrentLocation={handleUseCurrentLocation}
+        onToggleTempUnit={handleToggleTempUnit}
+        isLocating={isLocating}
+      />
+
       {weather && (
         <StickyHeader
           cityName={weather.place.name}
+          country={weather.place.countryCode || weather.place.country}
+          timezone={weather.timezone}
           temperature={weather.current.temperature}
           condition={currentCodeInfo?.label ?? 'Clear'}
           unit={units.temperature}
@@ -155,30 +178,44 @@ export default function App() {
 
       {weather && (
         <main className="weather-content">
-          <HeroWeather
-            cityName={weather.place.name}
-            temperature={weather.current.temperature}
-            condition={currentCodeInfo?.label ?? 'Clear'}
-            highTemp={weather.daily[0]?.temperatureMax ?? weather.current.temperature}
-            lowTemp={weather.daily[0]?.temperatureMin ?? weather.current.temperature}
-            unit={units.temperature}
-            scrollY={scrollY}
-          />
+          <div className="weather-hero-area">
+            <HeroWeather
+              cityName={weather.place.name}
+              admin1={weather.place.admin1}
+              country={weather.place.country}
+              timezone={weather.timezone}
+              temperature={weather.current.temperature}
+              condition={currentCodeInfo?.label ?? 'Clear'}
+              highTemp={weather.daily[0]?.temperatureMax ?? weather.current.temperature}
+              lowTemp={weather.daily[0]?.temperatureMin ?? weather.current.temperature}
+              unit={units.temperature}
+              scrollY={scrollY}
+            />
+          </div>
 
-          <HourlyForecast items={weather.hourly} unit={units.temperature} />
+          <div className="weather-hourly-area">
+            <HourlyForecast items={weather.hourly} unit={units.temperature} />
+          </div>
 
-          <TenDayForecast
-            daily={weather.daily}
-            currentTemperature={weather.current.temperature}
-            unit={units.temperature}
-          />
+          <div className="weather-daily-area">
+            <TenDayForecast
+              daily={weather.daily}
+              currentTemperature={weather.current.temperature}
+              unit={units.temperature}
+            />
+          </div>
 
-          <DetailTiles weather={weather} units={units} />
+          <div className="weather-details-area">
+            <DetailTiles weather={weather} units={units} />
+          </div>
 
-          <Footer />
+          <div className="weather-footer-area">
+            <Footer />
+          </div>
         </main>
       )}
 
+      {/* Mobile Bottom Navigation Bar (Visible on screens < 1024px) */}
       <BottomBar
         places={places}
         activeIndex={safeIndex}
@@ -187,6 +224,7 @@ export default function App() {
         onOpenSettings={() => setIsSettingsOpen(true)}
       />
 
+      {/* Mobile Saved Places Modal */}
       <PlacesModal
         isOpen={isPlacesOpen}
         onClose={() => setIsPlacesOpen(false)}
@@ -196,9 +234,18 @@ export default function App() {
         onAddPlace={handleAddPlace}
         onDeletePlace={handleDeletePlace}
         onUseCurrentLocation={handleUseCurrentLocation}
+        onOpenCountryPicker={() => setIsCountryPickerOpen(true)}
         isLocating={isLocating}
       />
 
+      {/* All Countries Directory Modal */}
+      <CountryPickerModal
+        isOpen={isCountryPickerOpen}
+        onClose={() => setIsCountryPickerOpen(false)}
+        onSelectCountry={handleSelectPlace}
+      />
+
+      {/* Units of Measurement Modal */}
       <UnitsModal
         isOpen={isSettingsOpen}
         onClose={() => setIsSettingsOpen(false)}

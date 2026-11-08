@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Search, X, Trash2, Navigation, MapPin } from 'lucide-react';
+import { Search, X, Trash2, Navigation, MapPin, Globe2 } from 'lucide-react';
 import { Place } from '../../types/weather';
 import { useDebounce } from '../../hooks/useDebounce';
 import { searchPlaces } from '../../api/openMeteo';
@@ -14,6 +14,7 @@ interface PlacesModalProps {
   onAddPlace: (place: Place) => void;
   onDeletePlace: (placeId: string) => void;
   onUseCurrentLocation: () => void;
+  onOpenCountryPicker?: () => void;
   isLocating: boolean;
 }
 
@@ -26,6 +27,7 @@ export const PlacesModal: React.FC<PlacesModalProps> = ({
   onAddPlace,
   onDeletePlace,
   onUseCurrentLocation,
+  onOpenCountryPicker,
   isLocating,
 }) => {
   const [searchQuery, setSearchQuery] = useState('');
@@ -113,6 +115,27 @@ export const PlacesModal: React.FC<PlacesModalProps> = ({
             </button>
           )}
         </div>
+
+        {/* Quick Country Directory Button */}
+        {onOpenCountryPicker && (
+          <button
+            className="location-action-btn"
+            style={{
+              marginBottom: '14px',
+              borderRadius: '12px',
+              background: 'rgba(96, 205, 255, 0.12)',
+              border: '1px solid rgba(96, 205, 255, 0.25)',
+              color: '#60cdff',
+            }}
+            onClick={() => {
+              onClose();
+              onOpenCountryPicker();
+            }}
+          >
+            <Globe2 size={18} />
+            <span>Browse All Countries & Capitals</span>
+          </button>
+        )}
 
         {/* Search Results Dropdown */}
         {(searchResults.length > 0 || searching || searchQuery.length >= 2) && (
